@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-const { Question } = require('../database/index.js');
+const { QuestionSet } = require('../database/index.js');
 const { User } = require('../database/index.js');
 const { Answer } = require('../database/index.js');
 
@@ -19,7 +19,7 @@ app.get('/users', function(req, res) {
 })
 
 app.get('/questions', function(req, res) {
-  var allUsers = Question.find().exec((err, data) => {
+  var allUsers = QuestionSet.find().exec((err, data) => {
     if (err) {
       console.log(err)
     } else {

@@ -1,5 +1,8 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/fetcher')
+mongoose.connect('mongodb://localhost/fetcher', {
+  useNewUrlParser: true,
+  userUnifiedTopology: true
+})
 
 let questionSchema = mongoose.Schema({
   primaryRecord: Number,
@@ -14,51 +17,27 @@ let questionSchema = mongoose.Schema({
       question: String,
       answers: [
         {
-          username: String,
-          profilePic: String,
-          date: Date,
-          answer: String
+          ansUsername: String,
+          ansProfilePic: String,
+          ansDate: Date,
+          ansAnswer: String
         }
       ]
     }
   ]
 })
 
-// let questionSchema = mongoose.Schema({
-//   date: Date,
-//   question: String
-// });
-
-// let usersSchema = mongoose.Schema({
-//   username: String,
-//   profilePic: String,
-//   location: String,
-//   numContributions: Number,
-//   numHelpfulVotes: Number
-// });
-
-// let answersSchema = mongoose.Schema({
-//   date: Date,
-//   answer: String,
-//   likes: Number
-// })
-
 let QuestionSet = mongoose.model('Question', questionSchema);
 
 let save = (document) => {
-  var document = new QuestionSet(document);
-  document.save((err) => {
+  document.save((err, data) => {
     if (err) {
-      console.log('ERROR WITH SAVING: ', err)
+      console.log("ERROR: ", err)
     }
   })
 }
 
-// let User = mongoose.model('User', usersSchema);
-
-// let Answer = mongoose.model('Answer', answersSchema);
-
 exports.QuestionSet = QuestionSet;
-// exports.save = save;
+exports.save = save;
 // exports.User = User;
 // exports.Answer = Answer;

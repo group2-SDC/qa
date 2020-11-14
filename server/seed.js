@@ -28,16 +28,6 @@ var createNewData = (i) => {
         question: faker.lorem.sentence(),
         answer: []
     }
-    // for (var j = 0; j < randomNumAnswers; j++) {
-    //   var answer = {
-    //     ansUsername: faker.name.findName(),
-    //     ansProfilePic: faker.image.imageUrl(),
-    //     ansDate: faker.date.past(),
-    //     ansAnswer: faker.lorem.sentence()
-    //   };
-    //   answersArray.push(answer)
-    //   question.answer.push(answer)
-    // }
     questionsArray.push(question)
   }
   // console.log('questionsArray[0].answer: ', questionsArray[0].answer)
@@ -62,7 +52,6 @@ var createNewData = (i) => {
   console.log('new question set=====>', newQuestionSet.questions)
 
   save(newQuestionSet);
-
 }
 
 var generateNRecords = (n) => {

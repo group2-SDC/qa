@@ -63,3 +63,11 @@ var generateNRecords = (n) => {
 
 generateNRecords(3);
 //will need to update to 100
+
+module.exports = {
+  createNewData,
+  generateNRecords
+}
+
+exports.createNewData = createNewData;
+exports.generateNRecords = generateNRecords;

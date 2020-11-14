@@ -3,8 +3,6 @@ const app = express();
 const port = 3000;
 
 const { QuestionSet } = require('../database/index.js');
-const { User } = require('../database/index.js');
-const { Answer } = require('../database/index.js');
 
 app.use(express.static(__dirname + '/../client/dist'));
 
@@ -25,3 +23,5 @@ app.post('/questions', function(req, res) {
   // I update the answers at that part
 })
 app.listen(port, () => console.log(`listening on port ${port}`))
+
+module.exports = app;

@@ -13,7 +13,7 @@ const { save } = require('../database/index.js');
   // run git pull origin main from vs code (recommended by Joel- this will pull the main from github down to my local repo)
   // OR (also recommended by Joel) just switch to branch main and run git merge <branch name>
 
-var createNewData = (i) => {
+var createNewData = (index) => {
   var randomNumQuestions = Math.floor(Math.random() * 50) + 1;
   var questionsArray = [];
   var answersArray = []
@@ -32,7 +32,7 @@ var createNewData = (i) => {
   }
   // console.log('questionsArray[0].answer: ', questionsArray[0].answer)
   var newQuestionSet = new QuestionSet ({
-    primaryRecord: i,
+    primaryRecord: index,
     questions: questionsArray
   })
 

@@ -7,7 +7,7 @@ const { QuestionSet } = require('../database/index.js');
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/questions', function(req, res) {
-  var allUsers = QuestionSet.find().exec((err, data) => {
+  var allUsers = QuestionSet.find().sort({primaryRecord: 'ascending'}).exec((err, data) => {
     // sort by primary record?
     if (err) {
       console.log(err)

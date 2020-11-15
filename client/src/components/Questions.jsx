@@ -6,7 +6,19 @@ class Questions extends React.Component {
   }
   render() {
     return (
-      <div>Testing questions.jsx</div>
+        <div className='questionModule'>
+          {this.props.questions.map((question) => (
+            <div className='question'>
+              <div>{question.profilePic}</div>
+              <div>{question.username}</div>
+              <div>{question.date}</div>
+              <div>{question.numContributions} contributions</div>
+              <div>{question.numHelpfulVotes} helpful votes</div>
+              <div>{question.question}</div>
+              <br></br>
+            </div>
+          ))}
+        </div>
     )
   }
 }

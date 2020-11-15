@@ -14,7 +14,7 @@ const { save } = require('../database/index.js');
   // OR (also recommended by Joel) just switch to branch main and run git merge <branch name>
 
 var createNewData = (i) => {
-  var randomNumQuestions = Math.floor(Math.random() * 10) + 1;
+  var randomNumQuestions = Math.floor(Math.random() * 50) + 1;
   var questionsArray = [];
   var answersArray = []
   for (var i = 0; i < randomNumQuestions; i++) {
@@ -36,20 +36,20 @@ var createNewData = (i) => {
     questions: questionsArray
   })
 
-  console.log('newQuestionSet.questions=======>', newQuestionSet.questions)
   for (let j = 0; j < newQuestionSet.questions.length; j++) {
-    var randomNumAnswers = Math.floor(Math.random() * 3) + 1;
+    var randomNumAnswers = Math.floor(Math.random() * 3);
     for (let k = 0; k < randomNumAnswers; k++) {
+      var randomNumLikes = Math.floor(Math.random() * 8)
       var answer = {
         ansUsername: faker.name.findName(),
         ansProfilePic: faker.image.imageUrl(),
         ansDate: faker.date.past(),
-        ansAnswer: faker.lorem.sentence()
+        ansAnswer: faker.lorem.sentence(),
+        likes: randomNumLikes
       };
       newQuestionSet.questions[j].answers.push(answer);
     }
   }
-  console.log('new question set=====>', newQuestionSet.questions)
 
   save(newQuestionSet);
 }

@@ -3,12 +3,12 @@ import { shallow, mount, render } from 'enzyme';
 import App from './App.jsx';
 
 describe('<App />', () => {
-  let wrapper;
-  beforeEach(() => { wrapper = shallow(<App />)})
-  it('renders a div', () => {
-    expect(wrapper.find('div').text()).toContain('Hello World!');
+  it('renders a span with text Hello World!', () => {
+    const wrapper = shallow(<App />)
+    expect(wrapper.find('div.test').text()).toContain('Hello World!');
   });
-  it('contains one div with class test', () => {
-    expect(wrapper.find('div.test')).to.have.lengthof(1);
-  })
+  // it('contains one div within div of class parent', () => {
+  //   const wrapperTwo = shallow(<App />)
+  //   expect(wrapperTwo.find('div.parent')).to.have.lengthOf(1);
+  // })
 });

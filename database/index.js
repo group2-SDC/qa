@@ -20,7 +20,8 @@ let questionSchema = mongoose.Schema({
           ansUsername: String,
           ansProfilePic: String,
           ansDate: Date,
-          ansAnswer: String
+          ansAnswer: String,
+          likes: Number
         }
       ]
     }

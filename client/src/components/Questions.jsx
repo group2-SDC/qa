@@ -8,10 +8,27 @@ const Body = styled.div `
     margin-top: 16px;
   }
 `
-const Question = styled.div `
+const QuestionModule = styled.div `
   margin-bottom: 12px;
 `
+const Question = styled.div `
+  padding: 16px 24px 12px;
+  border: solid #e0e0e0;
+  border-width: 0 0 1px;
+`
+const Answers = styled.div `
+  padding: 16px 24px 12px;
+  border: solid #e0e0e0;
+  border-width: 0 0 1px;
+`
+const AskQuestionBar = styled.form `
 
+`
+const TextField = styled.input `
+`
+const SubmitQButton = styled.button`
+
+`
 class Questions extends React.Component {
   constructor(props) {
     super(props)
@@ -19,18 +36,33 @@ class Questions extends React.Component {
   render() {
     return (
         <Body className='questionModule'>
+          <AskQuestionBar>
+            <TextField type="text"></TextField>
+            <SubmitQButton>Ask a question</SubmitQButton>
+          </AskQuestionBar>
           {this.props.questions.map((question) => (
-            <Question className='question'>
-              <div>{question.profilePic}</div>
-              <div>{question.username}</div>
-              <div>{question.date}</div>
-              <div>{question.numContributions} contributions</div>
-              <div>{question.numHelpfulVotes} helpful votes</div>
-              <div>{question.question}</div>
-              <br></br>
-            </Question>
-            // <Answer>
-            // </Answer>
+            <QuestionModule className='question'>
+              <Question>
+                <div>{question.profilePic}</div>
+                <div>{question.username}</div>
+                <div>{question.date}</div>
+                <div>{question.numContributions} contributions</div>
+                <div>{question.numHelpfulVotes} helpful votes</div>
+                <div>{question.question}</div>
+                <br></br>
+              </Question>
+              <Answers>
+                {question.answers.map((answer) => (
+                  <div>
+                    <div>{answer.ansProfilePic}</div>
+                    <div>Answer from {answer.ansUsername}</div>
+                    <div>{answer.ansDate}</div>
+                    <div>{answer.ansAnswer}</div>
+                    <div>{answer.likes} votes</div>
+                  </div>
+                ))}
+              </Answers>
+            </QuestionModule>
           ))}
         </Body>
     )

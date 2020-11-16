@@ -38,12 +38,13 @@ var createNewData = (index) => {
 
   for (let j = 0; j < newQuestionSet.questions.length; j++) {
     var randomNumAnswers = Math.floor(Math.random() * 3);
+    var minDate = newQuestionSet.questions[j].date;
     for (let k = 0; k < randomNumAnswers; k++) {
       var randomNumLikes = Math.floor(Math.random() * 8)
       var answer = {
         ansUsername: faker.name.findName(),
         ansProfilePic: faker.image.imageUrl(),
-        ansDate: faker.date.past(),
+        ansDate: faker.date.between(minDate, '2020-11-15'),
         ansAnswer: faker.lorem.sentence(),
         likes: randomNumLikes
       };

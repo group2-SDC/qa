@@ -1,4 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Body = styled.div `
+  background-color: #f2f2f2;
+  font-family: 'Poppins';
+  ${Question}:nth-child(1) {
+    margin-top: 16px;
+  }
+`
+const Question = styled.div `
+  margin-bottom: 12px;
+`
 
 class Questions extends React.Component {
   constructor(props) {
@@ -6,9 +18,9 @@ class Questions extends React.Component {
   }
   render() {
     return (
-        <div className='questionModule'>
+        <Body className='questionModule'>
           {this.props.questions.map((question) => (
-            <div className='question'>
+            <Question className='question'>
               <div>{question.profilePic}</div>
               <div>{question.username}</div>
               <div>{question.date}</div>
@@ -16,9 +28,11 @@ class Questions extends React.Component {
               <div>{question.numHelpfulVotes} helpful votes</div>
               <div>{question.question}</div>
               <br></br>
-            </div>
+            </Question>
+            // <Answer>
+            // </Answer>
           ))}
-        </div>
+        </Body>
     )
   }
 }

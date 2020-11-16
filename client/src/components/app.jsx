@@ -16,6 +16,9 @@ import Questions from './questions.jsx';
 //   }
 // `
 
+const Main = styled.div `
+  background-color: #f2f2f2;
+`
 
 class App extends React.Component {
   constructor(props) {
@@ -39,16 +42,34 @@ class App extends React.Component {
     })
   }
 
+  addQuestion(question) {
+    // axios(
+    //   method: 'post',
+    //   url: '/questions',
+    //   data: {
+    //     username: 'Matthew Crawford',
+    //     // might have to change from Matthew Crawford
+    //     profilePic: 'http://placeimg.com/640/480',
+    //     date: '2020-03-11',
+    //     location: 'Seattle, Washington, United States',
+    //     numContributions: 1,
+    //     numHelpfulVotes: 0,
+    //     question: question,
+    //     answers: []
+    //   }
+    // )
+  }
+
   componentDidMount() {
     this.fetchQuestions()
   }
 
   render() {
     return (
-      <div className="parent">
+      <Main className="parent">
         {/* <Button>Next</Button> */}
         <Questions questions={this.state.questions} />
-      </div>
+      </Main>
     )
   }
 

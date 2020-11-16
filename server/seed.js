@@ -78,7 +78,6 @@ var createNewData = (index) => {
       prevAnsDate = answer.ansDate;
     }
   }
-
   save(newQuestionSet);
 }
 

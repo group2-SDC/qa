@@ -17,18 +17,33 @@ var createNewData = (index) => {
   var randomNumQuestions = Math.floor(Math.random() * 50) + 1;
   var questionsArray = [];
   var answersArray = []
+  let prevQuesDate;
   for (var i = 0; i < randomNumQuestions; i++) {
-    var question = {
-        username: faker.name.findName(),
-        profilePic: faker.image.imageUrl(),
-        date: faker.date.past(),
-        location: faker.address.city() + ', ' + faker.address.country(),
-        numContributions: Math.floor(Math.random() * 200),
-        numHelpfulVotes: Math.floor(Math.random() * 50),
-        question: faker.lorem.sentence(),
-        answer: []
+    if (prevQuesDate === undefined) {
+      var question = {
+          username: faker.name.findName(),
+          profilePic: faker.image.imageUrl(),
+          date: faker.date.past(),
+          location: faker.address.city() + ', ' + faker.address.country(),
+          numContributions: Math.floor(Math.random() * 200),
+          numHelpfulVotes: Math.floor(Math.random() * 50),
+          question: faker.lorem.sentence(),
+          answer: []
+      }
+    } else {
+      var question = {
+          username: faker.name.findName(),
+          profilePic: faker.image.imageUrl(),
+          date: faker.date.past(0.2, prevQuesDate),
+          location: faker.address.city() + ', ' + faker.address.country(),
+          numContributions: Math.floor(Math.random() * 200),
+          numHelpfulVotes: Math.floor(Math.random() * 50),
+          question: faker.lorem.sentence(),
+          answer: []
+      }
     }
-    questionsArray.push(question)
+    questionsArray.push(question);
+    prevQuesDate = question.date;
   }
   // console.log('questionsArray[0].answer: ', questionsArray[0].answer)
   var newQuestionSet = new QuestionSet ({
@@ -37,18 +52,30 @@ var createNewData = (index) => {
   })
 
   for (let j = 0; j < newQuestionSet.questions.length; j++) {
-    var randomNumAnswers = Math.floor(Math.random() * 3);
+    var randomNumAnswers = Math.floor(Math.random() * 5);
     var minDate = newQuestionSet.questions[j].date;
+    let prevAnsDate;
     for (let k = 0; k < randomNumAnswers; k++) {
       var randomNumLikes = Math.floor(Math.random() * 8)
-      var answer = {
-        ansUsername: faker.name.findName(),
-        ansProfilePic: faker.image.imageUrl(),
-        ansDate: faker.date.between(minDate, '2020-11-15'),
-        ansAnswer: faker.lorem.sentence(),
-        likes: randomNumLikes
-      };
+      if (prevAnsDate === undefined) {
+        var answer = {
+          ansUsername: faker.name.findName(),
+          ansProfilePic: faker.image.imageUrl(),
+          ansDate: faker.date.between(minDate, '2020-11-15'),
+          ansAnswer: faker.lorem.sentence(),
+          likes: randomNumLikes
+        };
+      } else {
+        var answer = {
+          ansUsername: faker.name.findName(),
+          ansProfilePic: faker.image.imageUrl(),
+          ansDate: faker.date.between(prevAnsDate, '2020-11-15'),
+          ansAnswer: faker.lorem.sentence(),
+          likes: randomNumLikes
+        };
+      }
       newQuestionSet.questions[j].answers.push(answer);
+      prevAnsDate = answer.ansDate;
     }
   }
 

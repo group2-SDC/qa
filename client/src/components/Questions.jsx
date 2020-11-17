@@ -21,14 +21,7 @@ const Answers = styled.div `
   border: solid #e0e0e0;
   border-width: 0 0 1px;
 `
-const AskQuestionBar = styled.form `
 
-`
-const TextField = styled.input `
-`
-const SubmitQButton = styled.button`
-
-`
 class Questions extends React.Component {
   constructor(props) {
     super(props)
@@ -36,10 +29,6 @@ class Questions extends React.Component {
   render() {
     return (
         <Body className='questionModule'>
-          <AskQuestionBar>
-            <TextField type="text"></TextField>
-            <SubmitQButton>Ask a question</SubmitQButton>
-          </AskQuestionBar>
           {this.props.questions.map((question) => (
             <QuestionModule className='question'>
               <Question>

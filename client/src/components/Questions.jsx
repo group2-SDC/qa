@@ -26,7 +26,7 @@ const AnswerBar = styled.form `
 `
 const TextField = styled.textarea `
 `
-const SubmitQButton = styled.button`
+const SubmitAButton = styled.button`
 
 `
 
@@ -38,6 +38,8 @@ class Questions extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.incrementVote = this.incrementVote.bind(this);
+    this.decrementVote = this.decrementVote.bind(this);
   }
 
   handleChange(event) {
@@ -52,6 +54,12 @@ class Questions extends React.Component {
     this.props.addAnswer(this.state.answerText, index);
     this.reinitializeState();
   }
+  incrementVote(questionIndex, ansIndex) {
+    this.props.plusOneVote(questionIndex, ansIndex)
+  }
+  decrementVote(questionIndex, ansIndex) {
+    this.props.minusOneVote(questionIndex, ansIndex)
+  }
   reinitializeState() {
     this.setState({
       answerText: ''
@@ -61,8 +69,8 @@ class Questions extends React.Component {
   render() {
     return (
         <Body className='questionModule'>
-          {this.props.questions.map((question, index) => (
-            <QuestionModule key={index} className='question'>
+          {this.props.questions.map((question, questionIndex) => (
+            <QuestionModule key={questionIndex} className='question'>
               <Question>
                 <div>{question.profilePic}</div>
                 <div>{question.username}</div>
@@ -73,19 +81,21 @@ class Questions extends React.Component {
                 <br></br>
               </Question>
               <Answers>
-                {question.answers.map((answer, index) => (
-                  <div key={index}>
+                {question.answers.map((answer, ansIndex) => (
+                  <div key={ansIndex}>
                     <div>{answer.ansProfilePic}</div>
                     <div>Answer from {answer.ansUsername}</div>
                     <div>{answer.ansDate}</div>
                     <div>{answer.ansAnswer}</div>
-                    <div>{answer.likes} votes</div>
+                    <span>
+                      <i className="far fa-thumbs-up" onClick={() => this.incrementVote(questionIndex, ansIndex)}></i><div>{answer.likes} votes</div><i className="far fa-thumbs-down" onClick={() => this.decrementVote(questionIndex, ansIndex)}></i>
+                    </span>
                   </div>
                 ))}
               </Answers>
               <AnswerBar>
                 <TextField placeholder="Answer question" onChange={this.handleChange} value={this.state.answerText}></TextField>
-                <SubmitQButton onClick={() => this.handleSubmit(index)}>Submit</SubmitQButton>
+                <SubmitAButton onClick={() => this.handleSubmit(questionIndex)}>Submit</SubmitAButton>
               </AnswerBar>
             </QuestionModule>
           ))}

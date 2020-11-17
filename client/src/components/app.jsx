@@ -17,8 +17,10 @@ class App extends React.Component {
     this.fetchQuestions = this.fetchQuestions.bind(this);
     // this.answerQuestion = this.answerQuestion.bind(this);
     this.updateQuestion = this.updateQuestion.bind(this);
-    this.addToState = this.addToState.bind(this);
+    this.addQuestion = this.addQuestion.bind(this);
     this.addAnswer = this.addAnswer.bind(this);
+    this.plusOneVote = this.plusOneVote.bind(this);
+    this.minusOneVote = this.minusOneVote.bind(this);
   }
 
   fetchQuestions() {
@@ -32,8 +34,7 @@ class App extends React.Component {
       console.log('THERE WAS AN ERROR: ', error)
     })
   }
-
-  addToState(question) {
+  addQuestion(question) {
     var currentState = this.state.questions.slice();
     console.log('currentState: ', currentState);
     var newQuestion = {
@@ -57,7 +58,6 @@ class App extends React.Component {
       this.updateQuestion(this.state.questions)
     })
   }
-
   addAnswer(answer, index) {
     var currentState = this.state.questions.slice();
     var newAnswer = {
@@ -78,7 +78,6 @@ class App extends React.Component {
       this.updateQuestion(this.state.questions)
     })
   }
-
   updateQuestion(questionsArray) {
     axios({
       method: 'post',
@@ -86,7 +85,14 @@ class App extends React.Component {
       data: questionsArray
     })
   }
-
+  plusOneVote(questionIndex, ansIndex) {
+    console.log('question index: ', questionIndex, 'ansIndex: ', ansIndex)
+    // Need to build out
+  }
+  minusOneVote(questionIndex, ansIndex) {
+    console.log('question index: ', questionIndex, 'ansIndex: ', ansIndex)
+    // Need to build out
+  }
   componentDidMount() {
     this.fetchQuestions();
   }
@@ -94,8 +100,8 @@ class App extends React.Component {
   render() {
     return (
       <Main className="parent">
-        <AskQuestion questions={this.state.questions} addToState={this.addToState}/>
-        <Questions questions={this.state.questions} addAnswer={this.addAnswer}/>
+        <AskQuestion questions={this.state.questions} addQuestion={this.addQuestion}/>
+        <Questions questions={this.state.questions} addAnswer={this.addAnswer}  plusOneVote={this.plusOneVote} minusOneVote={this.minusOneVote}/>
       </Main>
     )
   }

@@ -28,12 +28,18 @@ class AskQuestion extends React.Component {
   handleSubmit() {
     event.preventDefault();
     this.props.addToState(this.state.question);
+    this.reinitializeState();
+  }
+  reinitializeState() {
+    this.setState({
+      question: ''
+    })
   }
   render() {
     return (
       <div>
         <AskQuestionBar>
-          <TextField onChange={this.handleChange}></TextField>
+          <TextField onChange={this.handleChange} value={this.state.question}></TextField>
           <SubmitQButton onClick={this.handleSubmit}>Ask a question</SubmitQButton>
         </AskQuestionBar>
       </div>

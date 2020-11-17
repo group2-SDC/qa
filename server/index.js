@@ -26,7 +26,8 @@ app.post('/questions', function(req, res) {
   // req.body.id or something else will be how I transfer the inputted answer
   // then I find the specific item with QuestionSet.find(<some parameter>)
   // I update the answers at that part
-  var newQuestion = QuestionSet.findOneAndUpdate({primaryRecord: 0}, {questions: [req.body]}).exec((err, data) => {
+  console.log("req.body==========> ", req.body)
+  var newQuestion = QuestionSet.findOneAndUpdate({primaryRecord: 0}, {questions: req.body}).exec((err, data) => {
     if (err) {
       console.log(err)
     } else {

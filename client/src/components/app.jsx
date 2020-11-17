@@ -16,14 +16,19 @@ import Questions from './questions.jsx';
 //   }
 // `
 
+const Main = styled.div `
+  background-color: #f2f2f2;
+`
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.fetchQuestions = this.fetchQuestions.bind(this)
     this.state = {
       questions: []
     }
+    this.fetchQuestions = this.fetchQuestions.bind(this);
+    this.answerQuestion = this.answerQuestion.bind(this);
+    this.addQuestion = this.addQuestion.bind(this);
   }
 
   fetchQuestions() {
@@ -39,16 +44,64 @@ class App extends React.Component {
     })
   }
 
+  addQuestion(question) {
+    // WILL NEED TO FIND A WAY TO PASS IN THE CORRECT QUESTION ARRAY WITH THIS 'question' AS A NEW QUESTION THAT HAS BEEN ADDED TO THE FRONT OF THE ARRAY (UNSHIFT?). OR FIND A MONGOOSE METHOD THAT ESSENTIALLY ALLOWS ME TO PUSH THIS OR SAVE IT ONTO THE ARRAY
+    axios({
+      method: 'post',
+      url: '/questions',
+      data: {
+        username: 'Matthew Crawford',
+        // might have to change from Matthew Crawford
+        profilePic: 'http://placeimg.com/640/480',
+        date: '2020-11-16',
+        //Date hardcoded, will need to change
+        location: 'Seattle, Washington, United States',
+        numContributions: 1,
+        numHelpfulVotes: 0,
+        question: question,
+        answers: []
+      }
+    })
+  }
+
+  answerQuestion(answer) {
+    // WILL NEED TO FIND A WAY TO PASS IN THE CORRECT QUESTION ARRAY WITH THIS 'answer' AS THE ANSWER THAT HAS BEEN ADDED. OR FIND A MONGOOSE METHOD THAT ESSENTIALLY ALLOWS ME TO PUSH THIS OR SAVE IT ONTO THE ARRAY
+    axios({
+      method: 'post',
+      url: '/questions/answers',
+      data: {
+        username: 'Matthew Crawford',
+        // might have to change from Matthew Crawford
+        profilePic: 'http://placeimg.com/640/480',
+        date: '2020-11-16',
+        //Date hardcoded, will need to change
+        location: 'Seattle, Washington, United States',
+        numContributions: 1,
+        numHelpfulVotes: 0,
+        question: question,
+        answers: [{
+          ansUsername: 'Matthew Crawford',
+          // might have to change from Matthew Crawford
+          ansProfilePic: 'http://placeimg.com/640/480',
+          ansDate: '2020-11-16',
+          //Date hardcoded, will need to change
+          ansAnswer: answer,
+          likes: 0
+        }]
+      }
+    })
+  }
+
   componentDidMount() {
-    this.fetchQuestions()
+    this.fetchQuestions();
   }
 
   render() {
     return (
-      <div className="parent">
+      <Main className="parent">
         {/* <Button>Next</Button> */}
         <Questions questions={this.state.questions} />
-      </div>
+      </Main>
     )
   }
 

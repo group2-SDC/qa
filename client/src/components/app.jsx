@@ -86,12 +86,22 @@ class App extends React.Component {
     })
   }
   plusOneVote(questionIndex, ansIndex) {
-    console.log('question index: ', questionIndex, 'ansIndex: ', ansIndex)
-    // Need to build out
+    var currentState = this.state.questions.slice();
+    currentState[questionIndex].answers[ansIndex].likes += 1;
+    this.setState({
+      questions: currentState
+    }, () => {
+      this.updateQuestion(this.state.questions)
+    })
   }
   minusOneVote(questionIndex, ansIndex) {
-    console.log('question index: ', questionIndex, 'ansIndex: ', ansIndex)
-    // Need to build out
+    var currentState = this.state.questions.slice();
+    currentState[questionIndex].answers[ansIndex].likes -= 1;
+    this.setState({
+      questions: currentState
+    }, () => {
+      this.updateQuestion(this.state.questions)
+    })
   }
   componentDidMount() {
     this.fetchQuestions();

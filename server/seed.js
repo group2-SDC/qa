@@ -85,7 +85,7 @@ var createNewData = (index) => {
 
 var generateNRecords = (n) => {
   for (var i = 0; i < n; i++) {
-    console.log("i ========>", i)
+    console.log("primary record ========>", i)
     createNewData(i)
   }
 }

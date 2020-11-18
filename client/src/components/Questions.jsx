@@ -12,18 +12,28 @@ const Body = styled.div `
 `
 const QuestionModule = styled.div `
   margin-bottom: 12px;
+  background-color: rgb(255, 255, 255);
 `
 const Question = styled.div `
-  padding: 16px 24px 12px;
+  padding: 16px 24px 24px 12px;
   border: solid #e0e0e0;
   border-width: 0 0 1px;
 `
-// const Answerss = styled.div `
-//   padding: 16px 24px 12px;
-//   border: solid #e0e0e0;
-//   border-width: 0 0 1px;
-// `
+
+const QuestionHeader = styled.div `
+
+`
 const AnswerBar = styled.form `
+`
+const Buttons = styled.div `
+  margin-bottom: 12px;
+  background-color: rgb(255, 255, 255);
+  padding: 16px 24px 24px 12px;
+  border: solid #e0e0e0;
+  border-top-width: 1px;
+  border-right-width: 0px;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
 `
 class Questions extends React.Component {
   constructor(props) {
@@ -88,9 +98,13 @@ class Questions extends React.Component {
             if (questionIndex >= this.state.questionMin && questionIndex < this.state.questionMax) return (
               <QuestionModule key={questionIndex} className='question'>
                 <Question>
-                  <div>{question.profilePic}</div>
-                  <div>{question.username}</div>
-                  <div>{question.date}</div>
+                  <QuestionHeader>
+                    <a href={question.profilePic}
+                    <div>{question.profilePic}</div>
+                    <div>{question.username}</div>
+                    <div>{question.date}</div>
+                    <i className="fas fa-ellipsis-h"></i>
+                  </QuestionHeader>
                   <div>{question.numContributions} contributions</div>
                   <div>{question.numHelpfulVotes} helpful votes</div>
                   <div>{question.question}</div>
@@ -101,8 +115,10 @@ class Questions extends React.Component {
               </QuestionModule>
             )
           })}
-          {this.state.currentPage > 1 ? <button onClick={this.prevPage}>Previous</button>: null}
-          {this.state.currentPage * 5 > this.props.questions.length ? null:<button onClick={this.nextPage}>Next</button>}
+          <Buttons>
+            {this.state.currentPage > 1 ? <button onClick={this.prevPage}>Previous</button>: null}
+            {this.state.currentPage * 5 > this.props.questions.length ? null:<button onClick={this.nextPage}>Next</button>}
+          </Buttons>
         </Body>
     )
   }

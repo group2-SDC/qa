@@ -5,6 +5,9 @@ const TextField = styled.textarea`
 `
 const SubmitAButton = styled.button`
 `
+const AnswerBarStyled = styled.div `
+  padding: 16px 24px 24px 12px;
+`
 
 class AnswerQuestionBar extends React.Component {
   constructor(props) {
@@ -34,10 +37,10 @@ class AnswerQuestionBar extends React.Component {
 
   render() {
     return (
-      <div>
+      <AnswerBarStyled>
         <TextField placeholder="Answer question" value={this.state.answerText} onChange={this.handleChange}></TextField>
         <SubmitAButton onClick={() => this.handleSubmit(this.props.questionIndex, this.state.answerText)}>Submit</SubmitAButton>
-      </div>
+      </AnswerBarStyled>
     )
   }
 }

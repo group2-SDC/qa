@@ -27,7 +27,7 @@ class AskQuestion extends React.Component {
   }
   handleSubmit() {
     event.preventDefault();
-    this.props.addToState(this.state.question);
+    this.props.addQuestion(this.state.question);
     this.reinitializeState();
   }
   reinitializeState() {

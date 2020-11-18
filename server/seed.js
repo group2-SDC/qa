@@ -55,8 +55,10 @@ var createNewData = (index) => {
     var randomNumAnswers = Math.floor(Math.random() * 5);
     var minDate = newQuestionSet.questions[j].date;
     let prevAnsDate;
+    var likesCeiling = 8;
     for (let k = 0; k < randomNumAnswers; k++) {
-      var randomNumLikes = Math.floor(Math.random() * 8)
+      var randomNumLikes = Math.floor(Math.random() * likesCeiling)
+      likesCeiling = randomNumLikes;
       if (prevAnsDate === undefined) {
         var answer = {
           ansUsername: faker.name.findName(),
@@ -83,7 +85,7 @@ var createNewData = (index) => {
 
 var generateNRecords = (n) => {
   for (var i = 0; i < n; i++) {
-    console.log("i ========>", i)
+    console.log("primary record ========>", i)
     createNewData(i)
   }
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import Answers from './Answers.jsx';
+import AnswerQuestionBar from './AnswerQuestionBar.jsx';
 
 const Body = styled.div `
   background-color: #f2f2f2;
@@ -16,17 +18,12 @@ const Question = styled.div `
   border: solid #e0e0e0;
   border-width: 0 0 1px;
 `
-const Answers = styled.div `
-  padding: 16px 24px 12px;
-  border: solid #e0e0e0;
-  border-width: 0 0 1px;
-`
+// const Answerss = styled.div `
+//   padding: 16px 24px 12px;
+//   border: solid #e0e0e0;
+//   border-width: 0 0 1px;
+// `
 const AnswerBar = styled.form `
-
-`
-const TextField = styled.textarea `
-`
-const SubmitQButton = styled.button`
 
 `
 
@@ -34,10 +31,12 @@ class Questions extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      answerText: ''
+      answerText: '',
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.incrementVote = this.incrementVote.bind(this);
+    this.decrementVote = this.decrementVote.bind(this);
   }
 
   handleChange(event) {
@@ -46,11 +45,18 @@ class Questions extends React.Component {
       answerText: event.target.value
     })
   }
-  handleSubmit(index) {
+  handleSubmit(index, answerText) {
+    // fix with event as parameter?
     event.preventDefault();
     console.log("INDEX: ", index);
-    this.props.addAnswer(this.state.answerText, index);
+    this.props.addAnswer(answerText, index);
     this.reinitializeState();
+  }
+  incrementVote(questionIndex, ansIndex) {
+    this.props.plusOneVote(questionIndex, ansIndex)
+  }
+  decrementVote(questionIndex, ansIndex) {
+    this.props.minusOneVote(questionIndex, ansIndex)
   }
   reinitializeState() {
     this.setState({
@@ -61,37 +67,29 @@ class Questions extends React.Component {
   render() {
     return (
         <Body className='questionModule'>
-          {this.props.questions.map((question, index) => (
-            <QuestionModule key={index} className='question'>
-              <Question>
-                <div>{question.profilePic}</div>
-                <div>{question.username}</div>
-                <div>{question.date}</div>
-                <div>{question.numContributions} contributions</div>
-                <div>{question.numHelpfulVotes} helpful votes</div>
-                <div>{question.question}</div>
-                <br></br>
-              </Question>
-              <Answers>
-                {question.answers.map((answer, index) => (
-                  <div key={index}>
-                    <div>{answer.ansProfilePic}</div>
-                    <div>Answer from {answer.ansUsername}</div>
-                    <div>{answer.ansDate}</div>
-                    <div>{answer.ansAnswer}</div>
-                    <div>{answer.likes} votes</div>
-                  </div>
-                ))}
-              </Answers>
-              <AnswerBar>
-                <TextField placeholder="Answer question" onChange={this.handleChange} value={this.state.answerText}></TextField>
-                <SubmitQButton onClick={() => this.handleSubmit(index)}>Submit</SubmitQButton>
-              </AnswerBar>
-            </QuestionModule>
-          ))}
+          {this.props.questions.map((question, questionIndex) => {
+            if (!this.state.showAll) return (
+              <QuestionModule key={questionIndex} className='question'>
+                <Question>
+                  <div>{question.profilePic}</div>
+                  <div>{question.username}</div>
+                  <div>{question.date}</div>
+                  <div>{question.numContributions} contributions</div>
+                  <div>{question.numHelpfulVotes} helpful votes</div>
+                  <div>{question.question}</div>
+                  <br></br>
+                </Question>
+                <Answers answers={question.answers} questionIndex={questionIndex} incrementVote={this.incrementVote} decrementVote={this.decrementVote}/>
+                <AnswerQuestionBar questionIndex={questionIndex} handleSubmit={this.handleSubmit}/>
+              </QuestionModule>
+            )
+          })}
         </Body>
     )
   }
 }
 
 export default Questions;
+
+// ways to fix this issue:
+// move lines 85-100 to a new component

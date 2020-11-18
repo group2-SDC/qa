@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import Questions from './questions.jsx';
-import AskQuestion from './AskQuestion.jsx'
+import AskQuestion from './AskQuestion.jsx';
 
 const Main = styled.div `
   background-color: #f2f2f2;
@@ -17,8 +17,10 @@ class App extends React.Component {
     this.fetchQuestions = this.fetchQuestions.bind(this);
     // this.answerQuestion = this.answerQuestion.bind(this);
     this.updateQuestion = this.updateQuestion.bind(this);
-    this.addToState = this.addToState.bind(this);
+    this.addQuestion = this.addQuestion.bind(this);
     this.addAnswer = this.addAnswer.bind(this);
+    this.plusOneVote = this.plusOneVote.bind(this);
+    this.minusOneVote = this.minusOneVote.bind(this);
   }
 
   fetchQuestions() {
@@ -32,8 +34,7 @@ class App extends React.Component {
       console.log('THERE WAS AN ERROR: ', error)
     })
   }
-
-  addToState(question) {
+  addQuestion(question) {
     var currentState = this.state.questions.slice();
     console.log('currentState: ', currentState);
     var newQuestion = {
@@ -57,7 +58,6 @@ class App extends React.Component {
       this.updateQuestion(this.state.questions)
     })
   }
-
   addAnswer(answer, index) {
     var currentState = this.state.questions.slice();
     var newAnswer = {
@@ -78,7 +78,6 @@ class App extends React.Component {
       this.updateQuestion(this.state.questions)
     })
   }
-
   updateQuestion(questionsArray) {
     axios({
       method: 'post',
@@ -86,7 +85,24 @@ class App extends React.Component {
       data: questionsArray
     })
   }
-
+  plusOneVote(questionIndex, ansIndex) {
+    var currentState = this.state.questions.slice();
+    currentState[questionIndex].answers[ansIndex].likes += 1;
+    this.setState({
+      questions: currentState
+    }, () => {
+      this.updateQuestion(this.state.questions)
+    })
+  }
+  minusOneVote(questionIndex, ansIndex) {
+    var currentState = this.state.questions.slice();
+    currentState[questionIndex].answers[ansIndex].likes -= 1;
+    this.setState({
+      questions: currentState
+    }, () => {
+      this.updateQuestion(this.state.questions)
+    })
+  }
   componentDidMount() {
     this.fetchQuestions();
   }
@@ -94,8 +110,8 @@ class App extends React.Component {
   render() {
     return (
       <Main className="parent">
-        <AskQuestion questions={this.state.questions} addToState={this.addToState}/>
-        <Questions questions={this.state.questions} addAnswer={this.addAnswer}/>
+        <AskQuestion questions={this.state.questions} addQuestion={this.addQuestion}/>
+        <Questions questions={this.state.questions} addAnswer={this.addAnswer}  plusOneVote={this.plusOneVote} minusOneVote={this.minusOneVote}/>
       </Main>
     )
   }

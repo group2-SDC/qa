@@ -6,9 +6,12 @@ const AskQuestionBar = styled.form `
 `
 const TextField = styled.textarea `
 `
-const SubmitQButton = styled.button`
+TextField.displayName = 'TextField';
 
+const SubmitQButton = styled.button`
 `
+SubmitQButton.displayName = 'SubmitQButton'
+
 class AskQuestion extends React.Component {
   constructor(props) {
     super(props)
@@ -39,7 +42,7 @@ class AskQuestion extends React.Component {
     return (
       <div>
         <AskQuestionBar>
-          <textarea onChange={this.handleChange} value={this.state.question} name="question"/>
+          <TextField onChange={this.handleChange} value={this.state.question} name="question"></TextField>
           <SubmitQButton onClick={this.handleSubmit}>Ask a question</SubmitQButton>
         </AskQuestionBar>
       </div>

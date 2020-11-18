@@ -31,7 +31,7 @@ class App extends React.Component {
         // Hard coded to the first primary record, but can change this later...
       })
     }).catch((error) => {
-      console.log('THERE WAS AN ERROR: ', error)
+      console.log('THERE WAS AN ERROR: ')
     })
   }
   addQuestion(question) {

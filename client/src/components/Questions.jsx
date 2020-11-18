@@ -77,7 +77,7 @@ class Questions extends React.Component {
   }
   reinitializeState() {
     this.setState({
-      answerText: '',
+      answerText: ''
     })
   }
 

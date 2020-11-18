@@ -6,7 +6,6 @@ describe('<App />', () => {
   it('renders the app', () => {
     shallow(<App />)
   });
-  it('renders a page with questions')
 
   //it adds a question to the list of questions
 

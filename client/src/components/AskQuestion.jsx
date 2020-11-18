@@ -39,7 +39,7 @@ class AskQuestion extends React.Component {
     return (
       <div>
         <AskQuestionBar>
-          <TextField onChange={this.handleChange} value={this.state.question}></TextField>
+          <textarea onChange={this.handleChange} value={this.state.question} name="question"/>
           <SubmitQButton onClick={this.handleSubmit}>Ask a question</SubmitQButton>
         </AskQuestionBar>
       </div>

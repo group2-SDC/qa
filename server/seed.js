@@ -14,7 +14,7 @@ const { save } = require('../database/index.js');
   // OR (also recommended by Joel) just switch to branch main and run git merge <branch name>
 
 var createNewData = (index) => {
-  var randomNumQuestions = Math.floor(Math.random() * 50) + 1;
+  var randomNumQuestions = Math.floor(Math.random() * 50) + 5;
   var questionsArray = [];
   var answersArray = []
   let prevQuesDate;

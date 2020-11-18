@@ -80,31 +80,7 @@ class Questions extends React.Component {
                   <br></br>
                 </Question>
                 <Answers answers={question.answers} questionIndex={questionIndex} incrementVote={this.incrementVote} decrementVote={this.decrementVote}/>
-                {/* It will render x Answer components
-                Button needs to be inside of the answer component
-                Step 1 is to just transfer everything over and make sure it works
-                Step 2 is to figure out */}
-                {/* <Answerss>
-                  {question.answers.map((answer, ansIndex) => (
-                    // conditional here
-                      // hard code for first question, map for all questions
-                      // if only one question, no difference
-                    <div key={ansIndex}>
-                      <div>{answer.ansProfilePic}</div>
-                      <div>Answer from {answer.ansUsername}</div>
-                      <div>{answer.ansDate}</div>
-                      <div>{answer.ansAnswer}</div>
-                      <span>
-                        <i className="far fa-thumbs-up" onClick={() => this.incrementVote(questionIndex, ansIndex)}></i><div>{answer.likes} votes</div><i className="far fa-thumbs-down" onClick={() => this.decrementVote(questionIndex, ansIndex)}></i>
-                      </span>
-                    </div>
-                  ))}
-                </Answerss> */}
                 <AnswerQuestionBar questionIndex={questionIndex} handleSubmit={this.handleSubmit}/>
-                {/* <AnswerBar>
-                  <TextField placeholder="Answer question"  value={this.state.answerText} onChange={this.handleChange}></TextField>
-                  <SubmitAButton onClick={() => this.handleSubmit(questionIndex)}>Submit</SubmitAButton>
-                </AnswerBar> */}
               </QuestionModule>
             )
           })}

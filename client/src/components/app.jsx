@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import Questions from './questions.jsx';
-import AskQuestion from './AskQuestion.jsx'
+import AskQuestion from './AskQuestion.jsx';
 
 const Main = styled.div `
   background-color: #f2f2f2;

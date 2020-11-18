@@ -10,3 +10,12 @@ describe('Tests for questions component', () => {
     expect(testCallback.mock.calls.length).toEqual(1);
   })
 })
+
+// if it's react-related, enzyme's documentation is what we are looking at
+// shallow does not render the children of a <div>
+
+// mocking functions:
+
+// you don't actually need to render the child component of an onclick event
+// you just need the function that is invoked on clicking
+//look at screenshots from Joel's presentation

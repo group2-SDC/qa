@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Answers from './Answers.jsx';
+import AnswerQuestionBar from './AnswerQuestionBar.jsx';
 
 const Body = styled.div `
   background-color: #f2f2f2;
@@ -17,17 +18,12 @@ const Question = styled.div `
   border: solid #e0e0e0;
   border-width: 0 0 1px;
 `
-// const Answers = styled.div `
+// const Answerss = styled.div `
 //   padding: 16px 24px 12px;
 //   border: solid #e0e0e0;
 //   border-width: 0 0 1px;
 // `
 const AnswerBar = styled.form `
-
-`
-const TextField = styled.textarea `
-`
-const SubmitAButton = styled.button`
 
 `
 
@@ -36,7 +32,6 @@ class Questions extends React.Component {
     super(props)
     this.state = {
       answerText: '',
-      showAll: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -50,10 +45,11 @@ class Questions extends React.Component {
       answerText: event.target.value
     })
   }
-  handleSubmit(index) {
+  handleSubmit(index, answerText) {
+    // fix with event as parameter?
     event.preventDefault();
     console.log("INDEX: ", index);
-    this.props.addAnswer(this.state.answerText, index);
+    this.props.addAnswer(answerText, index);
     this.reinitializeState();
   }
   incrementVote(questionIndex, ansIndex) {
@@ -83,12 +79,12 @@ class Questions extends React.Component {
                   <div>{question.question}</div>
                   <br></br>
                 </Question>
-                <Answers answers={question.answers}></Answers>
+                <Answers answers={question.answers} questionIndex={questionIndex} incrementVote={this.incrementVote} decrementVote={this.decrementVote}/>
                 {/* It will render x Answer components
                 Button needs to be inside of the answer component
                 Step 1 is to just transfer everything over and make sure it works
                 Step 2 is to figure out */}
-                {/* <Answers>
+                {/* <Answerss>
                   {question.answers.map((answer, ansIndex) => (
                     // conditional here
                       // hard code for first question, map for all questions
@@ -103,11 +99,12 @@ class Questions extends React.Component {
                       </span>
                     </div>
                   ))}
-                </Answers> */}
-                <AnswerBar>
-                  <TextField placeholder="Answer question" onChange={this.handleChange} value={this.state.answerText}></TextField>
+                </Answerss> */}
+                <AnswerQuestionBar questionIndex={questionIndex} handleSubmit={this.handleSubmit}/>
+                {/* <AnswerBar>
+                  <TextField placeholder="Answer question"  value={this.state.answerText} onChange={this.handleChange}></TextField>
                   <SubmitAButton onClick={() => this.handleSubmit(questionIndex)}>Submit</SubmitAButton>
-                </AnswerBar>
+                </AnswerBar> */}
               </QuestionModule>
             )
           })}

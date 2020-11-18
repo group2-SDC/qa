@@ -21,7 +21,9 @@ const Question = styled.div `
 `
 
 const QuestionHeader = styled.div `
-
+`
+const QuestionHeaderInfo = styled.div `
+display: block;
 `
 const AnswerBar = styled.form `
 `
@@ -34,6 +36,29 @@ const Buttons = styled.div `
   border-right-width: 0px;
   border-left-width: 0px;
   border-bottom-width: 0px;
+`
+const Image = styled.img `
+height: 42px;
+width: 42px;
+border-radius: 100%;
+float: left;
+display: inline-block;
+`
+const QuestionBody = styled.div `
+`
+const Ellipsis = styled.i `
+  float: right;
+`
+const UserAndDate = styled.div `
+  padding-bottom: 2px;
+  font-size: 14px;
+  line-height: 18px;
+  color: #474747;
+`
+const LocationContVotes = styled.div `
+  font-size: 12px;
+  line-height: 16px;
+  color: #8c8c8c
 `
 class Questions extends React.Component {
   constructor(props) {
@@ -99,15 +124,22 @@ class Questions extends React.Component {
               <QuestionModule key={questionIndex} className='question'>
                 <Question>
                   <QuestionHeader>
-                    <a href={question.profilePic}
-                    <div>{question.profilePic}</div>
-                    <div>{question.username}</div>
-                    <div>{question.date}</div>
-                    <i className="fas fa-ellipsis-h"></i>
+                    <Image src={`${question.profilePic}?t=${Math.random()}`} ></Image>
+                    <QuestionHeaderInfo>
+                      <Ellipsis className="fas fa-ellipsis-h"></Ellipsis>
+                      <UserAndDate>
+                        <div><b>{question.username}</b> asked a question {question.date}</div>
+                      </UserAndDate>
+                      <LocationContVotes>
+                        <span>{question.location}</span>
+                        {question.numContributions > 0 ? <span>{question.numContributions} contributions</span>: null}
+                        {question.numHelpfulVotes > 0 ? <span>{question.numHelpfulVotes} helpful votes</span>: null}
+                      </LocationContVotes>
+                    </QuestionHeaderInfo>
                   </QuestionHeader>
-                  <div>{question.numContributions} contributions</div>
-                  <div>{question.numHelpfulVotes} helpful votes</div>
+                  <QuestionBody>
                   <div>{question.question}</div>
+                  </QuestionBody>
                   <br></br>
                 </Question>
                 <Answers answers={question.answers} questionIndex={questionIndex} incrementVote={this.incrementVote} decrementVote={this.decrementVote}/>

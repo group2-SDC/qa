@@ -22,22 +22,22 @@ var createNewData = (index) => {
     if (prevQuesDate === undefined) {
       var question = {
           username: faker.name.findName(),
-          profilePic: faker.image.imageUrl(),
+          profilePic: faker.image.animals(400, 400),
           date: faker.date.past(),
           location: faker.address.city() + ', ' + faker.address.country(),
           numContributions: Math.floor(Math.random() * 200),
-          numHelpfulVotes: Math.floor(Math.random() * 50),
+          numHelpfulVotes: Math.floor(Math.random() * 20),
           question: faker.lorem.sentence(),
           answer: []
       }
     } else {
       var question = {
           username: faker.name.findName(),
-          profilePic: faker.image.imageUrl(),
+          profilePic: faker.image.animals(400, 400),
           date: faker.date.past(0.2, prevQuesDate),
           location: faker.address.city() + ', ' + faker.address.country(),
           numContributions: Math.floor(Math.random() * 200),
-          numHelpfulVotes: Math.floor(Math.random() * 50),
+          numHelpfulVotes: Math.floor(Math.random() * 20),
           question: faker.lorem.sentence(),
           answer: []
       }
@@ -62,7 +62,7 @@ var createNewData = (index) => {
       if (prevAnsDate === undefined) {
         var answer = {
           ansUsername: faker.name.findName(),
-          ansProfilePic: faker.image.imageUrl(),
+          ansProfilePic: faker.image.animals(400, 400),
           ansDate: faker.date.between(minDate, '2020-11-15'),
           ansAnswer: faker.lorem.sentence(),
           likes: randomNumLikes
@@ -70,7 +70,7 @@ var createNewData = (index) => {
       } else {
         var answer = {
           ansUsername: faker.name.findName(),
-          ansProfilePic: faker.image.imageUrl(),
+          ansProfilePic: faker.image.animals(400, 400),
           ansDate: faker.date.between(prevAnsDate, '2020-11-15'),
           ansAnswer: faker.lorem.sentence(),
           likes: randomNumLikes

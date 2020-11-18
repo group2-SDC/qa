@@ -6,6 +6,11 @@ const AnswersStyled = styled.div `
   border: solid #e0e0e0;
   border-width: 0 0 1px;
 `
+const Image = styled.img `
+height: 42px;
+width: 42px;
+border-radius: 100%;
+`
 
 class Answers extends React.Component {
   constructor(props) {
@@ -37,7 +42,7 @@ class Answers extends React.Component {
             return (
               <AnswersStyled>
                 <div key={ansIndex}>
-                  <div>{answer.ansProfilePic}</div>
+                  <Image src={`${answer.ansProfilePic}?t=${Math.random()}`} ></Image>
                   <div>Answer from {answer.ansUsername}</div>
                   <div>{answer.ansDate}</div>
                   <i className="fas fa-ellipsis-h"></i>
@@ -55,7 +60,7 @@ class Answers extends React.Component {
     } else if (this.props.answers[0] !== undefined && this.props.answers.length === 1) {
       return (
         <AnswersStyled>
-            <div>{this.props.answers[0].ansProfilePic}</div>
+            <Image src={`${this.props.answers[0].ansProfilePic}?t=${Math.random()}`} ></Image>
             <div>Answer from {this.props.answers[0].ansUsername}</div>
             <div>{this.props.answers[0].ansDate}</div>
             <i className="fas fa-ellipsis-h"></i>
@@ -68,7 +73,7 @@ class Answers extends React.Component {
     } else if (this.props.answers[0] !== undefined) {
       return (
         <AnswersStyled>
-            <div>{this.props.answers[0].ansProfilePic}</div>
+            <Image src={`${this.props.answers[0].ansProfilePic}?t=${Math.random()}`} ></Image>
             <div>Answer from {this.props.answers[0].ansUsername}</div>
             <div>{this.props.answers[0].ansDate}</div>
             <i className="fas fa-ellipsis-h"></i>

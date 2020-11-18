@@ -24,9 +24,7 @@ const Question = styled.div `
 //   border-width: 0 0 1px;
 // `
 const AnswerBar = styled.form `
-
 `
-
 class Questions extends React.Component {
   constructor(props) {
     super(props)

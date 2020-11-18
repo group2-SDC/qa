@@ -13,6 +13,7 @@ class AnswerQuestionBar extends React.Component {
       answerText: ''
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleChange(event) {
     console.log('event.target.value: ', event.target.value);
@@ -20,12 +21,22 @@ class AnswerQuestionBar extends React.Component {
       answerText: event.target.value
     })
   }
+  handleSubmit(questionIndex, answerText) {
+    event.preventDefault();
+    this.props.handleSubmit(questionIndex, answerText);
+    this.reinitializeState();
+  }
+  reinitializeState() {
+    this.setState({
+      answerText: ''
+    })
+  }
 
   render() {
     return (
       <div>
         <TextField placeholder="Answer question" value={this.state.answerText} onChange={this.handleChange}></TextField>
-        <SubmitAButton onClick={() => this.props.handleSubmit(this.props.questionIndex, this.state.answerText)}>Submit</SubmitAButton>
+        <SubmitAButton onClick={() => this.handleSubmit(this.props.questionIndex, this.state.answerText)}>Submit</SubmitAButton>
       </div>
     )
   }

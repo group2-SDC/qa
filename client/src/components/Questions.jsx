@@ -32,11 +32,16 @@ class Questions extends React.Component {
     super(props)
     this.state = {
       answerText: '',
+      questionMin: 0,
+      questionMax: 5,
+      currentPage: 1
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.incrementVote = this.incrementVote.bind(this);
     this.decrementVote = this.decrementVote.bind(this);
+    this.nextPage = this.nextPage.bind(this);
+    this.prevPage = this.prevPage.bind(this);
   }
 
   handleChange(event) {
@@ -58,9 +63,23 @@ class Questions extends React.Component {
   decrementVote(questionIndex, ansIndex) {
     this.props.minusOneVote(questionIndex, ansIndex)
   }
+  nextPage() {
+    this.setState({
+      questionMin: this.state.questionMin + 5,
+      questionMax: this.state.questionMax + 5,
+      currentPage: this.state.currentPage + 1
+    })
+  }
+  prevPage() {
+    this.setState({
+      questionMin: this.state.questionMin - 5,
+      questionMax: this.state.questionMax - 5,
+      currentPage: this.state.currentPage - 1
+    })
+  }
   reinitializeState() {
     this.setState({
-      answerText: ''
+      answerText: '',
     })
   }
 
@@ -68,7 +87,7 @@ class Questions extends React.Component {
     return (
         <Body className='questionModule'>
           {this.props.questions.map((question, questionIndex) => {
-            if (!this.state.showAll) return (
+            if (questionIndex >= this.state.questionMin && questionIndex < this.state.questionMax) return (
               <QuestionModule key={questionIndex} className='question'>
                 <Question>
                   <div>{question.profilePic}</div>
@@ -84,6 +103,8 @@ class Questions extends React.Component {
               </QuestionModule>
             )
           })}
+          {this.state.currentPage > 1 ? <button onClick={this.prevPage}>Previous</button>: null}
+          {this.state.currentPage * 5 > this.props.questions.length ? null:<button onClick={this.nextPage}>Next</button>}
         </Body>
     )
   }

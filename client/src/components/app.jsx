@@ -6,6 +6,12 @@ import AskQuestion from './AskQuestion.jsx';
 
 const Main = styled.div `
   background-color: #f2f2f2;
+  font-family: 'Poppins';
+`
+
+const WholeModule = styled.div `
+  padding: 12px;
+  width: 66.6666677%;
 `
 
 class App extends React.Component {
@@ -31,7 +37,7 @@ class App extends React.Component {
         // Hard coded to the first primary record, but can change this later...
       })
     }).catch((error) => {
-      console.log('THERE WAS AN ERROR: ', error)
+      console.log('THERE WAS AN ERROR: ')
     })
   }
   addQuestion(question) {
@@ -110,8 +116,10 @@ class App extends React.Component {
   render() {
     return (
       <Main className="parent">
-        <AskQuestion questions={this.state.questions} addQuestion={this.addQuestion}/>
-        <Questions questions={this.state.questions} addAnswer={this.addAnswer}  plusOneVote={this.plusOneVote} minusOneVote={this.minusOneVote}/>
+        <WholeModule>
+          <AskQuestion questions={this.state.questions} addQuestion={this.addQuestion}/>
+          <Questions questions={this.state.questions} addAnswer={this.addAnswer}  plusOneVote={this.plusOneVote} minusOneVote={this.minusOneVote}/>
+        </WholeModule>
       </Main>
     )
   }

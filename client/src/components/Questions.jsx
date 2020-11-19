@@ -12,18 +12,53 @@ const Body = styled.div `
 `
 const QuestionModule = styled.div `
   margin-bottom: 12px;
+  background-color: rgb(255, 255, 255);
 `
 const Question = styled.div `
-  padding: 16px 24px 12px;
+  padding: 16px 24px 24px 12px;
   border: solid #e0e0e0;
   border-width: 0 0 1px;
 `
-// const Answerss = styled.div `
-//   padding: 16px 24px 12px;
-//   border: solid #e0e0e0;
-//   border-width: 0 0 1px;
-// `
+
+const QuestionHeader = styled.div `
+`
+const QuestionHeaderInfo = styled.div `
+display: block;
+`
 const AnswerBar = styled.form `
+`
+const Buttons = styled.div `
+  margin-bottom: 12px;
+  background-color: rgb(255, 255, 255);
+  padding: 16px 24px 24px 12px;
+  border: solid #e0e0e0;
+  border-top-width: 1px;
+  border-right-width: 0px;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+`
+const Image = styled.img `
+height: 42px;
+width: 42px;
+border-radius: 100%;
+float: left;
+display: inline-block;
+`
+const QuestionBody = styled.div `
+`
+const Ellipsis = styled.i `
+  float: right;
+`
+const UserAndDate = styled.div `
+  padding-bottom: 2px;
+  font-size: 14px;
+  line-height: 18px;
+  color: #474747;
+`
+const LocationContVotes = styled.div `
+  font-size: 12px;
+  line-height: 16px;
+  color: #8c8c8c
 `
 class Questions extends React.Component {
   constructor(props) {
@@ -77,7 +112,7 @@ class Questions extends React.Component {
   }
   reinitializeState() {
     this.setState({
-      answerText: '',
+      answerText: ''
     })
   }
 
@@ -88,12 +123,23 @@ class Questions extends React.Component {
             if (questionIndex >= this.state.questionMin && questionIndex < this.state.questionMax) return (
               <QuestionModule key={questionIndex} className='question'>
                 <Question>
-                  <div>{question.profilePic}</div>
-                  <div>{question.username}</div>
-                  <div>{question.date}</div>
-                  <div>{question.numContributions} contributions</div>
-                  <div>{question.numHelpfulVotes} helpful votes</div>
+                  <QuestionHeader>
+                    <Image src={`${question.profilePic}?t=${Math.random()}`} ></Image>
+                    <QuestionHeaderInfo>
+                      <Ellipsis className="fas fa-ellipsis-h"></Ellipsis>
+                      <UserAndDate>
+                        <div><b>{question.username}</b> asked a question {question.date}</div>
+                      </UserAndDate>
+                      <LocationContVotes>
+                        <span>{question.location}</span>
+                        {question.numContributions > 0 ? <span>{question.numContributions} contributions</span>: null}
+                        {question.numHelpfulVotes > 0 ? <span>{question.numHelpfulVotes} helpful votes</span>: null}
+                      </LocationContVotes>
+                    </QuestionHeaderInfo>
+                  </QuestionHeader>
+                  <QuestionBody>
                   <div>{question.question}</div>
+                  </QuestionBody>
                   <br></br>
                 </Question>
                 <Answers answers={question.answers} questionIndex={questionIndex} incrementVote={this.incrementVote} decrementVote={this.decrementVote}/>
@@ -101,8 +147,10 @@ class Questions extends React.Component {
               </QuestionModule>
             )
           })}
-          {this.state.currentPage > 1 ? <button onClick={this.prevPage}>Previous</button>: null}
-          {this.state.currentPage * 5 > this.props.questions.length ? null:<button onClick={this.nextPage}>Next</button>}
+          <Buttons>
+            {this.state.currentPage > 1 ? <button onClick={this.prevPage}>Previous</button>: null}
+            {this.state.currentPage * 5 > this.props.questions.length ? null:<button onClick={this.nextPage}>Next</button>}
+          </Buttons>
         </Body>
     )
   }

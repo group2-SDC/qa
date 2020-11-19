@@ -1,5 +1,8 @@
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
+import toJson from 'enzyme-to-json';
+import 'jest-styled-components';
+
 import App from './App.jsx';
 
 describe('<App />', () => {

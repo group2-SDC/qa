@@ -1,14 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const Header = styled.div `
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 24px;
+  padding: 0 16px;
+`
 const AskQuestionBar = styled.form `
 
 `
 const TextField = styled.textarea `
 `
-const SubmitQButton = styled.button`
+TextField.displayName = 'TextField';
 
+const SubmitQButton = styled.button`
 `
+SubmitQButton.displayName = 'SubmitQButton'
+
 class AskQuestion extends React.Component {
   constructor(props) {
     super(props)
@@ -37,12 +45,15 @@ class AskQuestion extends React.Component {
   }
   render() {
     return (
-      <div>
+      <Header>
+        <i class="far fa-comment-alt"></i>
+        <div>{this.props.questions.length} Q & A</div>
+        <div>Questions & Answers</div>
         <AskQuestionBar>
-          <textarea onChange={this.handleChange} value={this.state.question} name="question"/>
+          <TextField onChange={this.handleChange} value={this.state.question} name="question"></TextField>
           <SubmitQButton onClick={this.handleSubmit}>Ask a question</SubmitQButton>
         </AskQuestionBar>
-      </div>
+      </Header>
     )
   }
 }

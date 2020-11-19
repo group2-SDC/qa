@@ -100,7 +100,7 @@ class Answers extends React.Component {
               <AnswersStyled>
                 <div key={ansIndex}>
                   <AnswersHeader>
-                    <Image src={`${answer.ansProfilePic}?t=${Math.random()}`} ></Image>
+                    <Image src={`${answer.ansProfilePic}`} ></Image>
                     <AnswerFrom><span>Answer from <Username>{answer.ansUsername}</Username></span></AnswerFrom>
                     <div>
                       <DateAndEllipsis>
@@ -133,7 +133,7 @@ class Answers extends React.Component {
       return (
         <AnswersStyled>
           <AnswersHeader>
-            <Image src={`${this.props.answers[0].ansProfilePic}?t=${Math.random()}`} ></Image>
+            <Image src={`${this.props.answers[0].ansProfilePic}`} ></Image>
             <AnswerFrom><span>Answer from <Username>{this.props.answers[0].ansUsername}</Username></span></AnswerFrom>
             <div>
               <DateAndEllipsis>
@@ -174,7 +174,7 @@ class Answers extends React.Component {
       return (
         <AnswersStyled>
           <AnswersHeader>
-            <Image src={`${this.props.answers[0].ansProfilePic}?t=${Math.random()}`} ></Image>
+            <Image src={`${this.props.answers[0].ansProfilePic}`} ></Image>
             <AnswerFrom><span>Answer from <Username>{this.props.answers[0].ansUsername}</Username></span></AnswerFrom>
             <div>
               <DateAndEllipsis>

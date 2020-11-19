@@ -7,16 +7,60 @@ const AnswersStyled = styled.div `
   border-width: 0 0 1px;
 `
 const Image = styled.img `
-height: 42px;
-width: 42px;
+height: 28px;
+width: 28px;
+float: left;
+margin: -3px 8px 0 -3px;
 border-radius: 100%;
+`
+const AnswersHeader = styled.div `
+margin-bottom: 12px;
+display: block;
+`
+const AnswerFrom = styled.div `
+  padding-bottom: 2px;
+  font-size: 14px;
+  line-height: 18px;
+  color: #474747;
+`
+const DateAndEllipsis = styled.span `
+display: block;
+font-size: 12px;
+line-height: 20px;
+color: #8c8c8c;
+`
+const Ellipsis = styled.div `
+display: inline;
+float: none;
+position: relative;
+color: rgb(0, 0, 0);
+`
+const AnswerBody = styled.div `
+  color: rgb(140, 140, 140);
+  display: block;
+  font-size: 14px;
+  padding-left: 35px;
+`
+const Votes = styled.form `
+  margin-top: 8px;
+  line-height: 18px;
+  display: flex;
+  font-size: 12px;
+`
+const Likes = styled.span `
+  margin-left: 8px;
+  margin-right: 8px;
+  color: rgb(71, 71, 71);
+  font-weight: 700;
+  text-align: center;
 `
 
 class Answers extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      showAll: false
+      showAll: true
+      // Need to make sure this is switched back to false
     }
     this.showTopAnswer = this.showTopAnswer.bind(this);
     this.showAllAnswers = this.showAllAnswers.bind(this);
@@ -42,14 +86,25 @@ class Answers extends React.Component {
             return (
               <AnswersStyled>
                 <div key={ansIndex}>
+                  <AnswersHeader>
                   <Image src={`${answer.ansProfilePic}?t=${Math.random()}`} ></Image>
-                  <div>Answer from {answer.ansUsername}</div>
-                  <div>{answer.ansDate}</div>
-                  <i className="fas fa-ellipsis-h"></i>
-                  <div>{answer.ansAnswer}</div>
-                  <span>
-                    <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, ansIndex)}></i><div>{answer.likes} votes</div><i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, ansIndex)}></i>
-                  </span>
+                  <AnswerFrom><span>Answer from <b>{answer.ansUsername}</b></span></AnswerFrom>
+                  <div>
+                  <DateAndEllipsis>
+                  {answer.ansDate} | <Ellipsis><span><i className="fas fa-ellipsis-h"></i></span></Ellipsis>
+                  </DateAndEllipsis>
+                  </div>
+                  </AnswersHeader>
+                  <AnswerBody>
+                  {answer.ansAnswer}
+                  <Votes>
+                    <span>
+                      <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, ansIndex)}></i>
+                    </span>
+                    <Likes>{answer.likes} votes</Likes>
+                    <i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, ansIndex)}></i>
+                  </Votes>
+                  </AnswerBody>
                 </div>
               </AnswersStyled>
             )

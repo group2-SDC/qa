@@ -46,7 +46,7 @@ class AskQuestion extends React.Component {
   render() {
     return (
       <Header>
-        <i class="far fa-comment-alt"></i>
+        <i className="far fa-comment-alt"></i>
         <div>{this.props.questions.length} Q & A</div>
         <div>Questions & Answers</div>
         <AskQuestionBar>

@@ -47,7 +47,7 @@ class App extends React.Component {
     var newQuestion = {
       username: 'Matthew Crawford',
       // might have to change from Matthew Crawford
-      profilePic: 'http://placeimg.com/640/480',
+      profilePic: 'https://picsum.photos/id/100/200',
       date: '2020-11-16',
       //Date hardcoded, will need to change
       location: 'Seattle, Washington, United States',
@@ -70,7 +70,7 @@ class App extends React.Component {
     var newAnswer = {
       ansUsername: 'Matthew Crawford',
       // might have to change from Matthew Crawford
-      ansProfilePic: 'http://placeimg.com/640/480',
+      ansProfilePic: 'https://picsum.photos/id/100/200',
       ansDate: '2020-11-16',
       //Date hardcoded, will need to change
       ansAnswer: answer,

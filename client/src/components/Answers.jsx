@@ -77,6 +77,7 @@ class Answers extends React.Component {
     }
     this.showTopAnswer = this.showTopAnswer.bind(this);
     this.showAllAnswers = this.showAllAnswers.bind(this);
+    this.convertToMonthYear = this.convertToMonthYear.bind(this);
   }
   // Next: get show all answers and show top answer to work, create functions that setState
   // Then refactor the plus one vote and minus one vote functions to work
@@ -91,6 +92,49 @@ class Answers extends React.Component {
       showAll: true
     })
   }
+  convertToMonthYear(date) {
+    var split = date.split('-')
+    var month;
+
+    if (split[1] === '01') {
+      month = 'Jan'
+    }
+    if (split[1] === '02') {
+      month = 'Feb'
+    }
+    if (split[1] === '03') {
+      month = 'Mar'
+    }
+    if (split[1] === '04') {
+      month = 'Apr'
+    }
+    if (split[1] === '05') {
+      month == 'May'
+    }
+    if (split[1] === '06') {
+      month = 'Jun'
+    }
+    if (split[1] === '07') {
+      month = 'Jul'
+    }
+    if (split[1] === '08') {
+      month = 'Aug'
+    }
+    if (split[1] === '09') {
+      month = 'Sep'
+    }
+    if (split[1] === '10') {
+      month = 'Oct'
+    }
+    if (split[1] === '11') {
+      month = 'Nov'
+    }
+    if (split[1] === '12') {
+      month = 'Dec'
+    }
+    console.log('month: ', month)
+    return month + ' ' + split[0]
+  }
   render() {
     if (this.state.showAll) {
       return (
@@ -104,7 +148,7 @@ class Answers extends React.Component {
                     <AnswerFrom><span>Answer from <Username>{answer.ansUsername}</Username></span></AnswerFrom>
                     <div>
                       <DateAndEllipsis>
-                        {answer.ansDate} | <Ellipsis><span><i className="fas fa-ellipsis-h"></i></span></Ellipsis>
+                      {this.convertToMonthYear(answer.ansDate)} | <Ellipsis><span><i className="fas fa-ellipsis-h"></i></span></Ellipsis>
                       </DateAndEllipsis>
                     </div>
                   </AnswersHeader>
@@ -137,7 +181,7 @@ class Answers extends React.Component {
             <AnswerFrom><span>Answer from <Username>{this.props.answers[0].ansUsername}</Username></span></AnswerFrom>
             <div>
               <DateAndEllipsis>
-                {this.props.answers[0].ansDate} | <Ellipsis><span><i className="fas fa-ellipsis-h"></i></span></Ellipsis>
+                {this.convertToMonthYear(this.props.answers[0].ansDate)} | <Ellipsis><span><i className="fas fa-ellipsis-h"></i></span></Ellipsis>
               </DateAndEllipsis>
             </div>
           </AnswersHeader>
@@ -178,7 +222,7 @@ class Answers extends React.Component {
             <AnswerFrom><span>Answer from <Username>{this.props.answers[0].ansUsername}</Username></span></AnswerFrom>
             <div>
               <DateAndEllipsis>
-                {this.props.answers[0].ansDate} | <Ellipsis><span><i className="fas fa-ellipsis-h"></i></span></Ellipsis>
+                {this.convertToMonthYear(this.props.answers[0].ansDate)} | <Ellipsis><span><i className="fas fa-ellipsis-h"></i></span></Ellipsis>
               </DateAndEllipsis>
             </div>
           </AnswersHeader>

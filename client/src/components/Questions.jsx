@@ -19,8 +19,9 @@ const Question = styled.div `
   border: solid #e0e0e0;
   border-width: 0 0 1px;
 `
-
 const QuestionHeader = styled.div `
+  margin-bottom: 16px;
+  display: block;
 `
 const QuestionHeaderInfo = styled.div `
 display: block;
@@ -46,6 +47,8 @@ display: inline-block;
 margin: -3px 8px 0 -3px;
 `
 const QuestionBody = styled.div `
+  font-size: 16px;
+  line-height: 20px;
 `
 const Ellipsis = styled.i `
   float: right;

@@ -141,7 +141,7 @@ class Questions extends React.Component {
               <QuestionModule key={questionIndex} className='question'>
                 <Question>
                   <QuestionHeader>
-                    <Image src={`${question.profilePic}?t=${Math.random()}`} ></Image>
+                    <Image src={`${question.profilePic}`} ></Image>
                     <QuestionHeaderInfo>
                       <Ellipsis className="fas fa-ellipsis-h"></Ellipsis>
                       <UserAndDate>

@@ -22,7 +22,8 @@ var createNewData = (index) => {
     if (prevQuesDate === undefined) {
       var question = {
           username: faker.name.findName(),
-          profilePic: faker.image.animals(400, 400) + Math.random(),
+          profilePic: 'https://picsum.photos/id/' + Math.floor(Math.random() * 300) + '/200',
+          // USE THE V2 LIST TO GET VALID PHOTOS THEN PICK FROM THERE
           date: faker.date.past(),
           location: faker.address.city() + ', ' + faker.address.country(),
           numContributions: Math.floor(Math.random() * 200),
@@ -33,7 +34,7 @@ var createNewData = (index) => {
     } else {
       var question = {
           username: faker.name.findName(),
-          profilePic: faker.image.animals(400, 400) + Math.random(),
+          profilePic: 'https://picsum.photos/id/' + Math.floor(Math.random() * 300) + '/200',
           date: faker.date.past(0.2, prevQuesDate),
           location: faker.address.city() + ', ' + faker.address.country(),
           numContributions: Math.floor(Math.random() * 200),
@@ -62,7 +63,7 @@ var createNewData = (index) => {
       if (prevAnsDate === undefined) {
         var answer = {
           ansUsername: faker.name.findName(),
-          ansProfilePic: faker.image.animals(400, 400) + Math.random(),
+          ansProfilePic: 'https://picsum.photos/id/' + Math.floor(Math.random() * 300) + '/200',
           ansDate: faker.date.between(minDate, '2020-11-15'),
           ansAnswer: faker.lorem.sentence(),
           likes: randomNumLikes
@@ -70,7 +71,7 @@ var createNewData = (index) => {
       } else {
         var answer = {
           ansUsername: faker.name.findName(),
-          ansProfilePic: faker.image.animals(400, 400) + Math.random(),
+          ansProfilePic: 'https://picsum.photos/id/' + Math.floor(Math.random() * 300) + '/200',
           ansDate: faker.date.between(prevAnsDate, '2020-11-15'),
           ansAnswer: faker.lorem.sentence(),
           likes: randomNumLikes

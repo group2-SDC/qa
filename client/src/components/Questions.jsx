@@ -43,6 +43,7 @@ width: 42px;
 border-radius: 100%;
 float: left;
 display: inline-block;
+margin: -3px 8px 0 -3px;
 `
 const QuestionBody = styled.div `
 `
@@ -58,7 +59,20 @@ const UserAndDate = styled.div `
 const LocationContVotes = styled.div `
   font-size: 12px;
   line-height: 16px;
-  color: #8c8c8c
+  color: #8c8c8c;
+`
+const Location = styled.span `
+`
+const NumContributions = styled.span `
+`
+const NumHelpfulVotes = styled.span `
+`
+const CircleIcon = styled.span `
+  font-size: 4px;
+  vertical-align: middle;
+`
+const BoldSpan = styled.span `
+  font-weight: 500;
 `
 class Questions extends React.Component {
   constructor(props) {
@@ -128,12 +142,12 @@ class Questions extends React.Component {
                     <QuestionHeaderInfo>
                       <Ellipsis className="fas fa-ellipsis-h"></Ellipsis>
                       <UserAndDate>
-                        <div><b>{question.username}</b> asked a question {question.date}</div>
+                        <div><BoldSpan>{question.username}</BoldSpan> asked a question {question.date}</div>
                       </UserAndDate>
                       <LocationContVotes>
-                        <span>{question.location}</span>
-                        {question.numContributions > 0 ? <span>{question.numContributions} contributions</span>: null}
-                        {question.numHelpfulVotes > 0 ? <span>{question.numHelpfulVotes} helpful votes</span>: null}
+                        <span><i className="fas fa-map-marker-alt"></i></span><Location> {question.location} </Location>
+                        {question.numContributions > 0 ? <NumContributions><CircleIcon><i className="fas fa-circle"></i></CircleIcon><BoldSpan> {question.numContributions} </BoldSpan> contributions </NumContributions>: null}
+                        {question.numHelpfulVotes > 0 ? <NumHelpfulVotes><CircleIcon><i className="fas fa-circle"></i></CircleIcon><BoldSpan> {question.numHelpfulVotes} </BoldSpan> helpful votes</NumHelpfulVotes>: null}
                       </LocationContVotes>
                     </QuestionHeaderInfo>
                   </QuestionHeader>

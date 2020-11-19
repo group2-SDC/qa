@@ -36,8 +36,35 @@ overflow: hidden;
 resize: none;
 `
 const SubmitAButton = styled.button `
+background-color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);
+border-radius: 3px;
+border-width: 1px;
+color: rgb(255, 255, 255);
+display: inline-block;
+padding-bottom: 8px;
+padding-top: 8px;
+padding-right: 16px;
+padding-left: 16px;
+text-align: center;
+height: 36px;
+width: 77px;
+margin-right: 16px;
 `
 const SubmitQButton = styled.button `
+background-color: rgb(255, 255, 255);
+border-color: rgb(0, 0, 0);
+border-radius: 3px;
+border-width: 1px;
+color: rgb(0, 0, 0);
+display: inline-block;
+padding-bottom: 8px;
+padding-top: 8px;
+padding-right: 16px;
+padding-left: 16px;
+text-align: center;
+height: 36px;
+width: 77px;
 `
 const AnswerBarStyled = styled.div `
   padding: 16px 24px 24px 12px;

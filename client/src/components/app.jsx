@@ -7,6 +7,7 @@ import AskQuestion from './AskQuestion.jsx';
 const Main = styled.div `
   background-color: #f2f2f2;
   font-family: 'Poppins';
+  font-weight: 200;
 `
 
 const WholeModule = styled.div `

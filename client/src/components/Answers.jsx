@@ -1,15 +1,71 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const AnswersStyled = styled.div `
+const AnswersStyled = styled.div`
   padding: 16px 24px 24px 12px;
   border: solid #e0e0e0;
   border-width: 0 0 1px;
 `
-const Image = styled.img `
-height: 42px;
-width: 42px;
+const Image = styled.img`
+height: 28px;
+width: 28px;
+float: left;
+margin: -3px 8px 0 -3px;
 border-radius: 100%;
+`
+const AnswersHeader = styled.div`
+margin-bottom: 12px;
+display: block;
+`
+const AnswerFrom = styled.div`
+  padding-bottom: 2px;
+  font-size: 14px;
+  line-height: 18px;
+  color: #474747;
+`
+const Username = styled.span`
+font-weight: 500;
+`
+const DateAndEllipsis = styled.span`
+display: block;
+font-size: 12px;
+line-height: 20px;
+color: #8c8c8c;
+`
+const Ellipsis = styled.div`
+display: inline;
+float: none;
+position: relative;
+color: rgb(0, 0, 0);
+`
+const AnswerBody = styled.div`
+  color: rgb(140, 140, 140);
+  display: block;
+  font-size: 14px;
+  padding-left: 35px;
+`
+const Votes = styled.form`
+  margin-top: 8px;
+  line-height: 18px;
+  display: flex;
+  font-size: 12px;
+`
+const Likes = styled.span`
+  margin-left: 8px;
+  margin-right: 8px;
+  color: rgb(71, 71, 71);
+  font-weight: 500;
+  text-align: center;
+`
+const ThumbDown = styled.span`
+  margin-bottom: -10px;
+`
+const ShowAnswerButton = styled.span`
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  margin-top: 16px;
+  display: block;
 `
 
 class Answers extends React.Component {
@@ -17,6 +73,7 @@ class Answers extends React.Component {
     super(props)
     this.state = {
       showAll: false
+      // Need to make sure this is switched back to false
     }
     this.showTopAnswer = this.showTopAnswer.bind(this);
     this.showAllAnswers = this.showAllAnswers.bind(this);
@@ -42,49 +99,120 @@ class Answers extends React.Component {
             return (
               <AnswersStyled>
                 <div key={ansIndex}>
-                  <Image src={`${answer.ansProfilePic}?t=${Math.random()}`} ></Image>
-                  <div>Answer from {answer.ansUsername}</div>
-                  <div>{answer.ansDate}</div>
-                  <i className="fas fa-ellipsis-h"></i>
-                  <div>{answer.ansAnswer}</div>
-                  <span>
-                    <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, ansIndex)}></i><div>{answer.likes} votes</div><i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, ansIndex)}></i>
-                  </span>
+                  <AnswersHeader>
+                    <Image src={`${answer.ansProfilePic}`} ></Image>
+                    <AnswerFrom><span>Answer from <Username>{answer.ansUsername}</Username></span></AnswerFrom>
+                    <div>
+                      <DateAndEllipsis>
+                        {answer.ansDate} | <Ellipsis><span><i className="fas fa-ellipsis-h"></i></span></Ellipsis>
+                      </DateAndEllipsis>
+                    </div>
+                  </AnswersHeader>
+                  <AnswerBody>
+                    {answer.ansAnswer}
+                    <Votes>
+                      <span>
+                        <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, ansIndex)}></i>
+                      </span>
+                      <Likes>{answer.likes} votes</Likes>
+                      <ThumbDown>
+                        <i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, ansIndex)}></i>
+                      </ThumbDown>
+                    </Votes>
+                  </AnswerBody>
                 </div>
+                {ansIndex === this.props.answers.length - 1 ? <ShowAnswerButton onClick={this.showTopAnswer}>Show top answer</ShowAnswerButton> : null}
               </AnswersStyled>
             )
           })}
-          <button onClick={this.showTopAnswer}>Show top answer</button>
+          {/* <ShowAnswerButton onClick={this.showTopAnswer}>Show top answer</ShowAnswerButton> */}
         </div>
       )
-    } else if (this.props.answers[0] !== undefined && this.props.answers.length === 1) {
+    }
+    else if (this.props.answers[0] !== undefined && this.props.answers.length === 1) {
       return (
         <AnswersStyled>
-            <Image src={`${this.props.answers[0].ansProfilePic}?t=${Math.random()}`} ></Image>
-            <div>Answer from {this.props.answers[0].ansUsername}</div>
-            <div>{this.props.answers[0].ansDate}</div>
-            <i className="fas fa-ellipsis-h"></i>
-            <div>{this.props.answers[0].ansAnswer}</div>
-            <span>
-              <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, 0)}></i><div>{this.props.answers[0].likes} votes</div><i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, 0)}></i>
-            </span>
-        </AnswersStyled>
-      )
-    } else if (this.props.answers[0] !== undefined) {
-      return (
-        <AnswersStyled>
-            <Image src={`${this.props.answers[0].ansProfilePic}?t=${Math.random()}`} ></Image>
-            <div>Answer from {this.props.answers[0].ansUsername}</div>
-            <div>{this.props.answers[0].ansDate}</div>
-            <i className="fas fa-ellipsis-h"></i>
-            <div>{this.props.answers[0].ansAnswer}</div>
-            <span>
-              <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, 0)}></i><div>{this.props.answers[0].likes} votes</div><i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, 0)}></i>
-            </span>
-            <button onClick={this.showAllAnswers}>Show all answers</button>
+          <AnswersHeader>
+            <Image src={`${this.props.answers[0].ansProfilePic}`} ></Image>
+            <AnswerFrom><span>Answer from <Username>{this.props.answers[0].ansUsername}</Username></span></AnswerFrom>
+            <div>
+              <DateAndEllipsis>
+                {this.props.answers[0].ansDate} | <Ellipsis><span><i className="fas fa-ellipsis-h"></i></span></Ellipsis>
+              </DateAndEllipsis>
+            </div>
+          </AnswersHeader>
+          <AnswerBody>
+            {this.props.answers[0].ansAnswer}
+            <Votes>
+              <span>
+                <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, 0)}></i>
+              </span>
+              <Likes>{this.props.answers[0].likes} votes</Likes>
+              <ThumbDown>
+                <i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, 0)}></i>
+              </ThumbDown>
+            </Votes>
+          </AnswerBody>
         </AnswersStyled>
       )
     }
+    // else if (this.props.answers[0] !== undefined && this.props.answers.length === 1) {
+    //   return (
+    //     <AnswersStyled>
+    //       <Image src={`${this.props.answers[0].ansProfilePic}?t=${Math.random()}`} ></Image>
+    //       <div>Answer from {this.props.answers[0].ansUsername}</div>
+    //       <div>{this.props.answers[0].ansDate}</div>
+    //       <i className="fas fa-ellipsis-h"></i>
+    //       <div>{this.props.answers[0].ansAnswer}</div>
+    //       <span>
+    //         <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, 0)}></i><div>{this.props.answers[0].likes} votes</div><i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, 0)}></i>
+    //       </span>
+    //     </AnswersStyled>
+    //   )
+    // }
+    else if (this.props.answers[0] !== undefined) {
+      return (
+        <AnswersStyled>
+          <AnswersHeader>
+            <Image src={`${this.props.answers[0].ansProfilePic}`} ></Image>
+            <AnswerFrom><span>Answer from <Username>{this.props.answers[0].ansUsername}</Username></span></AnswerFrom>
+            <div>
+              <DateAndEllipsis>
+                {this.props.answers[0].ansDate} | <Ellipsis><span><i className="fas fa-ellipsis-h"></i></span></Ellipsis>
+              </DateAndEllipsis>
+            </div>
+          </AnswersHeader>
+          <AnswerBody>
+            {this.props.answers[0].ansAnswer}
+            <Votes>
+              <span>
+                <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, 0)}></i>
+              </span>
+              <Likes>{this.props.answers[0].likes} votes</Likes>
+              <ThumbDown>
+                <i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, 0)}></i>
+              </ThumbDown>
+            </Votes>
+          </AnswerBody>
+          <ShowAnswerButton onClick={this.showAllAnswers}>Show all answers</ShowAnswerButton>
+        </AnswersStyled>
+      )
+    }
+    // else if (this.props.answers[0] !== undefined) {
+    //   return (
+    //     <AnswersStyled>
+    //       <Image src={`${this.props.answers[0].ansProfilePic}?t=${Math.random()}`} ></Image>
+    //       <div>Answer from {this.props.answers[0].ansUsername}</div>
+    //       <div>{this.props.answers[0].ansDate}</div>
+    //       <i className="fas fa-ellipsis-h"></i>
+    //       <div>{this.props.answers[0].ansAnswer}</div>
+    //       <span>
+    //         <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, 0)}></i><div>{this.props.answers[0].likes} votes</div><i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, 0)}></i>
+    //       </span>
+    //       <ShowAnswerButton onClick={this.showAllAnswers}>Show all answers</ShowAnswerButton>
+    //     </AnswersStyled>
+    //   )
+    // }
     else {
       return null;
     }

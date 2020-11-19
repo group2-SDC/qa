@@ -92,6 +92,7 @@ class Questions extends React.Component {
     this.decrementVote = this.decrementVote.bind(this);
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
+    this.convertToMonthYear = this.convertToMonthYear.bind(this);
   }
 
   handleChange(event) {
@@ -132,6 +133,49 @@ class Questions extends React.Component {
       answerText: ''
     })
   }
+  convertToMonthYear(date) {
+    var split = date.split('-')
+    var month;
+
+    if (split[1] === '01') {
+      month = 'Jan'
+    }
+    if (split[1] === '02') {
+      month = 'Feb'
+    }
+    if (split[1] === '03') {
+      month = 'Mar'
+    }
+    if (split[1] === '04') {
+      month = 'Apr'
+    }
+    if (split[1] === '05') {
+      month == 'May'
+    }
+    if (split[1] === '06') {
+      month = 'Jun'
+    }
+    if (split[1] === '07') {
+      month = 'Jul'
+    }
+    if (split[1] === '08') {
+      month = 'Aug'
+    }
+    if (split[1] === '09') {
+      month = 'Sep'
+    }
+    if (split[1] === '10') {
+      month = 'Oct'
+    }
+    if (split[1] === '11') {
+      month = 'Nov'
+    }
+    if (split[1] === '12') {
+      month = 'Dec'
+    }
+    console.log('month: ', month)
+    return month + ' ' + split[0]
+  }
 
   render() {
     return (
@@ -145,7 +189,7 @@ class Questions extends React.Component {
                     <QuestionHeaderInfo>
                       <Ellipsis className="fas fa-ellipsis-h"></Ellipsis>
                       <UserAndDate>
-                        <div><BoldSpan>{question.username}</BoldSpan> asked a question {question.date}</div>
+                        <div><BoldSpan>{question.username}</BoldSpan> asked a question {this.convertToMonthYear(question.date)}</div>
                       </UserAndDate>
                       <LocationContVotes>
                         <span><i className="fas fa-map-marker-alt"></i></span><Location> {question.location} </Location>

@@ -132,7 +132,6 @@ class Answers extends React.Component {
     if (split[1] === '12') {
       month = 'Dec'
     }
-    console.log('month: ', month)
     return month + ' ' + split[0]
   }
   render() {

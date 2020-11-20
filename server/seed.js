@@ -2,6 +2,7 @@ var faker = require('faker');
 const mongoose = require('mongoose');
 const { QuestionSet } = require('../database/index.js');
 const { save } = require('../database/index.js');
+// const axios = require('axios')
 
 //To return all from these collections on command line
   //db.users.find() or db.questions.find() or db.answers.find()
@@ -12,6 +13,19 @@ const { save } = require('../database/index.js');
   // switch back to main branch on github
   // run git pull origin main from vs code (recommended by Joel- this will pull the main from github down to my local repo)
   // OR (also recommended by Joel) just switch to branch main and run git merge <branch name>
+
+// var validImagesArray = []
+// var getValidImages = () => {
+//   axios.get('https://picsum.photos/v2/list?page=1&limit=100')
+//   .then((response) => {
+//     for (var i = 0; i < response.length; i++) {
+//       validImagesArray.push(response[i].url)
+//     }
+//   }).catch((error) => {
+//     console.log('THERE WAS AN ERROR: ')
+//   })
+// }
+// getValidImages();
 
 var createNewData = (index) => {
   var randomNumQuestions = Math.floor(Math.random() * 50) + 5;

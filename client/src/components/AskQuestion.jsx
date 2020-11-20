@@ -27,6 +27,7 @@ const SubmitQButton = styled.button`
   text-align: center;
   height: 36px;
   width: 126px;
+  right: 2%;
 `
 SubmitQButton.displayName = 'SubmitQButton'
 

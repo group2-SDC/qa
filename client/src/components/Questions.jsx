@@ -89,6 +89,8 @@ text-align: center;
 height: 36px;
 width: 77px;
 `
+PrevButton.displayName = 'PrevButton';
+
 const NextButton = styled.button`
 background-color: rgb(0, 0, 0);
 border-color: rgb(0, 0, 0);
@@ -105,6 +107,8 @@ text-align: center;
 height: 36px;
 width: 77px;
 `
+NextButton.displayName = 'NextButton';
+
 const CircleIcon = styled.span`
   font-size: 4px;
   vertical-align: middle;
@@ -171,7 +175,6 @@ class Questions extends React.Component {
   convertToMonthYear(date) {
     var split = date.split('-')
     var month;
-
     if (split[1] === '01') {
       month = 'Jan'
     }
@@ -208,7 +211,6 @@ class Questions extends React.Component {
     if (split[1] === '12') {
       month = 'Dec'
     }
-    console.log('month: ', month)
     return month + ' ' + split[0]
   }
 

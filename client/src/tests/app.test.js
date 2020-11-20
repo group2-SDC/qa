@@ -3,7 +3,7 @@ import { shallow, mount, render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import 'jest-styled-components';
 
-import App from './App.jsx';
+import App from '../Components/App.jsx';
 
 describe('<App />', () => {
   it('renders the app', () => {

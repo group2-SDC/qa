@@ -71,6 +71,8 @@ width: 95%;
 overflow: hidden;
 resize: none;
 `
+TextFieldExpanded.displayName = 'TextFieldExpanded';
+
 const SubmitAButton = styled.button`
   background-color: rgb(0, 0, 0);
   border-color: rgb(0, 0, 0);
@@ -87,6 +89,8 @@ const SubmitAButton = styled.button`
   width: 77px;
   margin-right: 16px;
 `
+SubmitAButton.displayName = 'SubmitAButton';
+
 const SubmitQButton = styled.button`
   background-color: rgb(255, 255, 255);
   border-color: rgb(0, 0, 0);
@@ -102,6 +106,7 @@ const SubmitQButton = styled.button`
   height: 36px;
   width: 77px;
 `
+SubmitQButton.displayName = 'SubmitQButton'
 const AnswerSubmission = styled.div`
 `
 const PostingGuidelines = styled.div`

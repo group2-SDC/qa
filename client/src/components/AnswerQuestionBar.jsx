@@ -114,7 +114,6 @@ class AnswerQuestionBar extends React.Component {
     this.cancel = this.cancel.bind(this);
   }
   handleChange(event) {
-    console.log('event.target.value: ', event.target.value);
     this.setState({
       answerText: event.target.value
     })

@@ -84,9 +84,9 @@ class AskQuestion extends React.Component {
       question: event.target.value
     });
   }
-  handleSubmit() {
+  handleSubmit(question) {
     event.preventDefault();
-    this.props.addQuestion(this.state.question);
+    this.props.addQuestion(question);
     this.reinitializeState();
   }
   reinitializeState() {
@@ -150,7 +150,7 @@ class AskQuestion extends React.Component {
             <AskQuestionBar>
               {/* <TextField onChange={this.handleChange} value={this.state.question} name="question"></TextField> */}
             </AskQuestionBar>
-            <Modal hideModal={this.hideModal}/>
+            <Modal hideModal={this.hideModal} handleSubmit={this.handleSubmit}/>
               </Styling2>
             </Styling1>
           </LowerSpanDiv>

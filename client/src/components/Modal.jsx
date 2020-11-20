@@ -81,12 +81,18 @@ class Modal extends React.Component {
       question: ''
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleChange(event) {
     console.log('event.target.value: ', event.target.value);
     this.setState({
       question: event.target.value
     });
+  }
+  handleSubmit() {
+    event.preventDefault();
+    this.props.handleSubmit(this.state.question);
+    this.props.hideModal();
   }
   render() {
     return (
@@ -97,7 +103,7 @@ class Modal extends React.Component {
           <Guidelines>Posting Guidelines</Guidelines>
         </PostingGuidelines>
         <SubCancel>
-          <SubmitAButton>Submit</SubmitAButton>
+          <SubmitAButton onClick={this.handleSubmit}>Submit</SubmitAButton>
           <SubmitQButton onClick={() => this.props.hideModal()}>Cancel</SubmitQButton>
         </SubCancel>
       </AnswerSubmission>

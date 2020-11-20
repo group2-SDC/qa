@@ -4,7 +4,30 @@ import styled from 'styled-components';
 const TotalModal = styled.div`
 `
 const Form = styled.div `
+margin-top: 16px;
+`
+const Overall = styled.div `
 padding: 48px 48px;
+`
+const Note = styled.div `
+font-size: 12px;
+`
+const QuickAnswers = styled.div `
+font-weight: 500;
+`
+const Image = styled.img `
+height: 28px;
+width: 28px;
+float: left;
+margin: -3px 8px 0 -3px;
+border-radius: 100%;
+display: inline-block;
+line-height: 18px;
+`
+const ActualForm = styled.div `
+`
+const DisplayBlock = styled.div `
+  display: block;
 `
 const XButton = styled.div `
 position: absolute;
@@ -18,7 +41,7 @@ const ModalDisplay = styled.div`
   background: white;
   width: 70%;
   height: auto;
-  top: 50%%;
+  top: 30%;
   left: 50%;
   border-color: black;
   border-width: 1px;
@@ -84,18 +107,17 @@ const AnswerSubmission = styled.div`
 const PostingGuidelines = styled.div`
 margin-top: 16px;
 color: rgb(44, 44, 44);
+display: inline-block;
 `
 const Guidelines = styled.span`
 font-size: 14px;
 border-bottom: 1px dotted #e0e0e0;
-flex-grow: 0;
-float: right;
-margin-right: 10px;
-display: inline-block;
 `
 const SubCancel = styled.div`
 display: inline-block;
 float: left;
+margin-top: 16px;
+margin-bottom: 50px;
 `
 class Modal extends React.Component {
   constructor(props) {
@@ -128,18 +150,27 @@ class Modal extends React.Component {
           <XButton onClick={() => this.props.hideModal()}>
             X
           </XButton>
-          <Form>
+          <Overall>
+            <QuickAnswers>Get Quick answers from staff and past guests.</QuickAnswers>
+            <Form>
+            <Image src={`https://picsum.photos/id/100/200`}></Image>
+            <ActualForm>
             <TextFieldExpanded placeholder="Hi, what would you like to know about this attraction?" rows="5" onChange={this.handleChange} value={this.state.question}></TextFieldExpanded>
+            <Note>Note: your question will be posted publicly on the Questions & Answers page.</Note>
             <AnswerSubmission>
+              <DisplayBlock>
               <PostingGuidelines>
                 <Guidelines>Posting Guidelines</Guidelines>
               </PostingGuidelines>
+              </DisplayBlock>
               <SubCancel>
                 <SubmitAButton onClick={this.handleSubmit}>Submit</SubmitAButton>
                 <SubmitQButton onClick={() => this.props.hideModal()}>Cancel</SubmitQButton>
               </SubCancel>
             </AnswerSubmission>
-          </Form>
+            </ActualForm>
+            </Form>
+          </Overall>
         </TotalModal>
       </ModalDisplay>
     )

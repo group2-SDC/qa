@@ -1,17 +1,40 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ModalDisplay = styled.div `
+const TotalModal = styled.div`
+`
+const Form = styled.div `
+padding: 48px 48px;
+`
+const XButton = styled.div `
+position: absolute;
+font-size: 16px;
+font-weight: 500;
+right: 2%;
+top: 4%;
+`
+const ModalDisplay = styled.div`
   position: fixed;
   background: white;
-  width: 80%;
+  width: 70%;
   height: auto;
-  top: 50%;
+  top: 50%%;
   left: 50%;
   border-color: black;
   border-width: 1px;
+  transform: translate(-50%, -50%);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 8px 0px;
 `
-const TextFieldExpanded = styled.textarea `
+const AskAQuestion = styled.div`
+  padding: 16px 48px 16px 24px;
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  background-color: rgb(242, 242, 242);
+
+`
+const TextFieldExpanded = styled.textarea`
 box-sizing: border-box;
 padding: 12px;
 font-size: 14px;
@@ -25,44 +48,44 @@ width: 95%;
 overflow: hidden;
 resize: none;
 `
-const SubmitAButton = styled.button `
-background-color: rgb(0, 0, 0);
-border-color: rgb(0, 0, 0);
-border-radius: 3px;
-border-width: 1px;
-color: rgb(255, 255, 255);
-display: inline-block;
-padding-bottom: 8px;
-padding-top: 8px;
-padding-right: 16px;
-padding-left: 16px;
-text-align: center;
-height: 36px;
-width: 77px;
-margin-right: 16px;
+const SubmitAButton = styled.button`
+  background-color: rgb(0, 0, 0);
+  border-color: rgb(0, 0, 0);
+  border-radius: 3px;
+  border-width: 1px;
+  color: rgb(255, 255, 255);
+  display: inline-block;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  padding-right: 16px;
+  padding-left: 16px;
+  text-align: center;
+  height: 36px;
+  width: 77px;
+  margin-right: 16px;
 `
-const SubmitQButton = styled.button `
-background-color: rgb(255, 255, 255);
-border-color: rgb(0, 0, 0);
-border-radius: 3px;
-border-width: 1px;
-color: rgb(0, 0, 0);
-display: inline-block;
-padding-bottom: 8px;
-padding-top: 8px;
-padding-right: 16px;
-padding-left: 16px;
-text-align: center;
-height: 36px;
-width: 77px;
+const SubmitQButton = styled.button`
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(0, 0, 0);
+  border-radius: 3px;
+  border-width: 1px;
+  color: rgb(0, 0, 0);
+  display: inline-block;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  padding-right: 16px;
+  padding-left: 16px;
+  text-align: center;
+  height: 36px;
+  width: 77px;
 `
-const AnswerSubmission = styled.div `
+const AnswerSubmission = styled.div`
 `
-const PostingGuidelines = styled.div `
+const PostingGuidelines = styled.div`
 margin-top: 16px;
 color: rgb(44, 44, 44);
 `
-const Guidelines = styled.span `
+const Guidelines = styled.span`
 font-size: 14px;
 border-bottom: 1px dotted #e0e0e0;
 flex-grow: 0;
@@ -70,7 +93,7 @@ float: right;
 margin-right: 10px;
 display: inline-block;
 `
-const SubCancel = styled.div `
+const SubCancel = styled.div`
 display: inline-block;
 float: left;
 `
@@ -97,16 +120,27 @@ class Modal extends React.Component {
   render() {
     return (
       <ModalDisplay>
-      <TextFieldExpanded placeholder="Hi, what would you like to know about this attraction?" rows="5" onChange={this.handleChange} value={this.state.question}></TextFieldExpanded>
-      <AnswerSubmission>
-        <PostingGuidelines>
-          <Guidelines>Posting Guidelines</Guidelines>
-        </PostingGuidelines>
-        <SubCancel>
-          <SubmitAButton onClick={this.handleSubmit}>Submit</SubmitAButton>
-          <SubmitQButton onClick={() => this.props.hideModal()}>Cancel</SubmitQButton>
-        </SubCancel>
-      </AnswerSubmission>
+        <TotalModal>
+          <AskAQuestion>
+            <i className="far fa-comment-alt"></i>
+            <span> Ask a question</span>
+          </AskAQuestion>
+          <XButton onClick={() => this.props.hideModal()}>
+            X
+          </XButton>
+          <Form>
+            <TextFieldExpanded placeholder="Hi, what would you like to know about this attraction?" rows="5" onChange={this.handleChange} value={this.state.question}></TextFieldExpanded>
+            <AnswerSubmission>
+              <PostingGuidelines>
+                <Guidelines>Posting Guidelines</Guidelines>
+              </PostingGuidelines>
+              <SubCancel>
+                <SubmitAButton onClick={this.handleSubmit}>Submit</SubmitAButton>
+                <SubmitQButton onClick={() => this.props.hideModal()}>Cancel</SubmitQButton>
+              </SubCancel>
+            </AnswerSubmission>
+          </Form>
+        </TotalModal>
       </ModalDisplay>
     )
   }

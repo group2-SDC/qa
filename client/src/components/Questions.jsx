@@ -171,7 +171,6 @@ class Questions extends React.Component {
   convertToMonthYear(date) {
     var split = date.split('-')
     var month;
-
     if (split[1] === '01') {
       month = 'Jan'
     }
@@ -208,7 +207,6 @@ class Questions extends React.Component {
     if (split[1] === '12') {
       month = 'Dec'
     }
-    console.log('month: ', month)
     return month + ' ' + split[0]
   }
 

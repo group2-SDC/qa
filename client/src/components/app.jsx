@@ -19,7 +19,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: []
+      questions: [],
+      pathname: window.location.pathname.slice(1, window.location.pathname.length -1)
     }
     this.fetchQuestions = this.fetchQuestions.bind(this);
     // this.answerQuestion = this.answerQuestion.bind(this);
@@ -31,7 +32,11 @@ class App extends React.Component {
   }
 
   fetchQuestions() {
-    axios.get('/questions')
+    console.log('window in state: ', this.state.pathname)
+    console.log('window.location.pathname: ', window.location.pathname)
+    //Just want the listing ID, store as a variable in state? To pass in to all requests
+    axios.get('/' + this.state.pathname + '/questions/')
+    // IT WORKS WHEN I HARD CODE A 0, 1, OR 2 instead of ${window.location.pathname}/ and change the corresponding things in INDEX.JS BUT WHY DOES IT NOT WORK WITH THIS?
     .then((response) => {
       this.setState({
         questions: response.data[0].questions

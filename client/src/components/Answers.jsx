@@ -199,20 +199,6 @@ class Answers extends React.Component {
         </AnswersStyled>
       )
     }
-    // else if (this.props.answers[0] !== undefined && this.props.answers.length === 1) {
-    //   return (
-    //     <AnswersStyled>
-    //       <Image src={`${this.props.answers[0].ansProfilePic}?t=${Math.random()}`} ></Image>
-    //       <div>Answer from {this.props.answers[0].ansUsername}</div>
-    //       <div>{this.props.answers[0].ansDate}</div>
-    //       <i className="fas fa-ellipsis-h"></i>
-    //       <div>{this.props.answers[0].ansAnswer}</div>
-    //       <span>
-    //         <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, 0)}></i><div>{this.props.answers[0].likes} votes</div><i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, 0)}></i>
-    //       </span>
-    //     </AnswersStyled>
-    //   )
-    // }
     else if (this.props.answers[0] !== undefined) {
       return (
         <AnswersStyled>
@@ -241,21 +227,6 @@ class Answers extends React.Component {
         </AnswersStyled>
       )
     }
-    // else if (this.props.answers[0] !== undefined) {
-    //   return (
-    //     <AnswersStyled>
-    //       <Image src={`${this.props.answers[0].ansProfilePic}?t=${Math.random()}`} ></Image>
-    //       <div>Answer from {this.props.answers[0].ansUsername}</div>
-    //       <div>{this.props.answers[0].ansDate}</div>
-    //       <i className="fas fa-ellipsis-h"></i>
-    //       <div>{this.props.answers[0].ansAnswer}</div>
-    //       <span>
-    //         <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, 0)}></i><div>{this.props.answers[0].likes} votes</div><i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, 0)}></i>
-    //       </span>
-    //       <ShowAnswerButton onClick={this.showAllAnswers}>Show all answers</ShowAnswerButton>
-    //     </AnswersStyled>
-    //   )
-    // }
     else {
       return null;
     }

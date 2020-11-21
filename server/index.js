@@ -1,17 +1,19 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 3004;
 
 const { QuestionSet } = require('../database/index.js');
 
-app.use(express.static(__dirname + '/../client/dist'));
+app.use('/:listings_id', express.static(__dirname + '/../client/dist'));
+// Add in add'l parameter to handle 1-100
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-app.get('/questions', function(req, res) {
-  var allUsers = QuestionSet.find().sort({"primaryRecord": 1, "questions.numContributions": -1}).exec((err, data) => {
+app.get('/:listings_id/questions', function(req, res) {
+  console.log('req.params =======>', req.params)
+  var allUsers = QuestionSet.find({primaryRecord: req.params.listings_id}).exec((err, data) => {
     // IT DOES NOT APPEAR I CAN SORT BY ANYTHING WITHIN THE QUESTIONS ARRAY ('questions.numContributions'), AS IT IS TOO COMPLEX OF AN OBJECT FOR MONGOOSE TO SORT
     // sort by primary record?
     if (err) {
@@ -28,6 +30,7 @@ app.post('/questions', function(req, res) {
   // I update the answers at that part
   console.log("req.body==========> ", req.body)
   var newQuestion = QuestionSet.findOneAndUpdate({primaryRecord: 0}, {questions: req.body}).exec((err, data) => {
+    //Will also need to update the above line
     if (err) {
       console.log(err)
     } else {

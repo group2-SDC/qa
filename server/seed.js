@@ -29,6 +29,7 @@ const { save } = require('../database/index.js');
 
 var createNewData = (index) => {
   var randomNumQuestions = Math.floor(Math.random() * 50) + 5;
+  // Changed the above value of Math.random to limit the number of questions to make postman parsing easier
   var questionsArray = [];
   var answersArray = []
   let prevQuesDate;
@@ -60,7 +61,6 @@ var createNewData = (index) => {
     questionsArray.push(question);
     prevQuesDate = question.date;
   }
-  // console.log('questionsArray[0].answer: ', questionsArray[0].answer)
   var newQuestionSet = new QuestionSet ({
     primaryRecord: index,
     questions: questionsArray
@@ -100,12 +100,11 @@ var createNewData = (index) => {
 
 var generateNRecords = (n) => {
   for (var i = 0; i < n; i++) {
-    console.log("primary record ========>", i)
     createNewData(i)
   }
 }
 
-generateNRecords(3);
+generateNRecords(100);
 //will need to update to 100
 
 module.exports = {

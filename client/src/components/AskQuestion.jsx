@@ -119,7 +119,7 @@ class AskQuestion extends React.Component {
             <Styling1>
               <Styling2>
               <QandA>
-                Questions & Answers
+                Questions & Answerssssss
                 <SeeAll>See all {this.props.questions.length} questions</SeeAll>
                 <SubmitQButton onClick={() => this.showModal()}>Ask a question</SubmitQButton>
               </QandA>

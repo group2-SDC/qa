@@ -71,7 +71,7 @@ class AskQuestion extends React.Component {
     this.state = {
       question: '',
       showModal: false
-      // WILL NEED TO SWITCH BACK TO DEFAULT VALUE FALSE
+      // SHOULD I BE ESCAPING THE QUESTION DATA?
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

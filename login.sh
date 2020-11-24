@@ -1,1 +1,1 @@
-ssh -i "/Users/matthewcrawford/Documents/HRSEA-13/questionAndAnswer/questions.pem" ubuntu@ec2-54-189-51-184.us-west-2.compute.amazonaws.com
+ssh -i "/Users/matthewcrawford/Documents/HRSEA-13/questionAndAnswer/questions.pem" ubuntu@ec2-18-237-144-53.us-west-2.compute.amazonaws.com

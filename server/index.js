@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-app.get('api/listings/:listings_id/questions', function(req, res) {
+app.get('/api/listings/:listings_id/questions', function(req, res) {
   console.log('req.params =======>', req.params)
   var allUsers = QuestionSet.find({primaryRecord: req.params.listings_id}).exec((err, data) => {
     // IT DOES NOT APPEAR I CAN SORT BY ANYTHING WITHIN THE QUESTIONS ARRAY ('questions.numContributions'), AS IT IS TOO COMPLEX OF AN OBJECT FOR MONGOOSE TO SORT

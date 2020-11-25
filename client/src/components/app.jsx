@@ -35,8 +35,9 @@ class App extends React.Component {
     console.log('window in state: ', this.state.pathname)
     console.log('window.location.pathname: ', window.location.pathname)
     //Just want the listing ID, store as a variable in state? To pass in to all requests
-    axios.get('api/listings/' + this.state.pathname + '/questions/')
+    axios.get('/api/listings/' + this.state.pathname + '/questions/')
     .then((response) => {
+      console.log('response.data[0].questions: ', response.data[0].questions)
       this.setState({
         questions: response.data[0].questions
       })

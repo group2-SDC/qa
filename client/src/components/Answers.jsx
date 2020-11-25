@@ -94,46 +94,23 @@ class Answers extends React.Component {
   }
   convertToMonthYear(date) {
     var split = date.split('-')
-    var month;
-
-    if (split[1] === '01') {
-      month = 'Jan'
+    var monthsObj = {
+      '01': 'Jan',
+      '02': 'Feb',
+      '03': 'Mar',
+      '04': 'Apr',
+      '05': 'May',
+      '06': 'Jun',
+      '07': 'Jul',
+      '08': 'Aug',
+      '09': 'Sep',
+      '10': 'Oct',
+      '11': 'Nov',
+      '12': 'Dec'
     }
-    if (split[1] === '02') {
-      month = 'Feb'
-    }
-    if (split[1] === '03') {
-      month = 'Mar'
-    }
-    if (split[1] === '04') {
-      month = 'Apr'
-    }
-    if (split[1] === '05') {
-      month == 'May'
-    }
-    if (split[1] === '06') {
-      month = 'Jun'
-    }
-    if (split[1] === '07') {
-      month = 'Jul'
-    }
-    if (split[1] === '08') {
-      month = 'Aug'
-    }
-    if (split[1] === '09') {
-      month = 'Sep'
-    }
-    if (split[1] === '10') {
-      month = 'Oct'
-    }
-    if (split[1] === '11') {
-      month = 'Nov'
-    }
-    if (split[1] === '12') {
-      month = 'Dec'
-    }
-    return month + ' ' + split[0]
+    return monthsObj[split[1]] + ' ' + split[0]
   }
+
   render() {
     if (this.state.showAll) {
       return (

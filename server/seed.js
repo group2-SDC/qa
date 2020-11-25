@@ -27,6 +27,18 @@ const { save } = require('../database/index.js');
 // }
 // getValidImages();
 
+var getRandomPic = () => {
+  var randomInt = Math.floor(Math.random() * (309-117) + 117)
+  var nonExistIds = [138, 148, 150, 205, 207, 224, 226, 245, 246, 262, 285, 286, 298, 303]
+  //The above IDs don't exist on picSum
+  if (nonExistIds.indexOf(randomInt) > -1) {
+    randomInt += 3;
+    return 'https://picsum.photos/id/' + randomInt + '/200';
+    // Plus 3 will guarantee no duplication
+  } else {
+    return 'https://picsum.photos/id/' + randomInt + '/200';
+  }
+}
 var createNewData = (index) => {
   var randomNumQuestions = Math.floor(Math.random() * 50) + 5;
   // Changed the above value of Math.random to limit the number of questions to make postman parsing easier
@@ -37,7 +49,7 @@ var createNewData = (index) => {
     if (prevQuesDate === undefined) {
       var question = {
           username: faker.name.findName(),
-          profilePic: 'https://picsum.photos/id/' + Math.floor(Math.random() * 300) + '/200',
+          profilePic: getRandomPic(),
           // USE THE V2 LIST TO GET VALID PHOTOS THEN PICK FROM THERE
           date: faker.date.past(),
           location: faker.address.city() + ', ' + faker.address.country(),
@@ -49,7 +61,7 @@ var createNewData = (index) => {
     } else {
       var question = {
           username: faker.name.findName(),
-          profilePic: 'https://picsum.photos/id/' + Math.floor(Math.random() * 300) + '/200',
+          profilePic: getRandomPic(),
           date: faker.date.past(0.2, prevQuesDate),
           location: faker.address.city() + ', ' + faker.address.country(),
           numContributions: Math.floor(Math.random() * 200),
@@ -77,7 +89,7 @@ var createNewData = (index) => {
       if (prevAnsDate === undefined) {
         var answer = {
           ansUsername: faker.name.findName(),
-          ansProfilePic: 'https://picsum.photos/id/' + Math.floor(Math.random() * 300) + '/200',
+          ansProfilePic: getRandomPic(),
           ansDate: faker.date.between(minDate, '2020-11-15'),
           ansAnswer: faker.lorem.sentence(),
           likes: randomNumLikes
@@ -85,7 +97,7 @@ var createNewData = (index) => {
       } else {
         var answer = {
           ansUsername: faker.name.findName(),
-          ansProfilePic: 'https://picsum.photos/id/' + Math.floor(Math.random() * 300) + '/200',
+          ansProfilePic: getRandomPic(),
           ansDate: faker.date.between(prevAnsDate, '2020-11-15'),
           ansAnswer: faker.lorem.sentence(),
           likes: randomNumLikes
@@ -99,13 +111,12 @@ var createNewData = (index) => {
 }
 
 var generateNRecords = (n) => {
-  for (var i = 0; i < n; i++) {
+  for (var i = 1; i <= n; i++) {
     createNewData(i)
   }
 }
 
 generateNRecords(100);
-//will need to update to 100
 
 module.exports = {
   createNewData,

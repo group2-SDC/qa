@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const port = 3004;
 const compression = require('compression')
-
 const { QuestionSet } = require('../database/index.js');
+
+app.use(compression());
 
 app.use('/:listings_id', express.static(__dirname + '/../client/dist'));
 // Add in add'l parameter to handle 1-100
@@ -11,7 +12,6 @@ app.use('/:listings_id', express.static(__dirname + '/../client/dist'));
 var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
-app.use(compression());
 
 
 app.get('/api/listings/:listings_id/questions', function(req, res) {

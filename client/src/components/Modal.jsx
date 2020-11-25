@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-
+// To create a modal like Jordan had
+// Create an overlay div that grays out the screen with z-index of 2
+// Create a function that disables scrolling on the body 'hidden'
+// Give the modal itself a z-index of 5
+// Reference screen shots
 const TotalModal = styled.div`
 `
 const Form = styled.div `

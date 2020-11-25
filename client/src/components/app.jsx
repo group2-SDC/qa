@@ -32,12 +32,9 @@ class App extends React.Component {
   }
 
   fetchQuestions() {
-    console.log('window in state: ', this.state.pathname)
-    console.log('window.location.pathname: ', window.location.pathname)
     //Just want the listing ID, store as a variable in state? To pass in to all requests
     axios.get('/api/listings/' + this.state.pathname + '/questions/')
     .then((response) => {
-      console.log('response.data[0].questions: ', response.data[0].questions)
       this.setState({
         questions: response.data[0].questions
       })
@@ -47,7 +44,6 @@ class App extends React.Component {
   }
   addQuestion(question) {
     var currentState = this.state.questions.slice();
-    console.log('currentState: ', currentState);
     var newQuestion = {
       username: 'Matthew Crawford',
       // might have to change from Matthew Crawford
@@ -61,11 +57,9 @@ class App extends React.Component {
       answers: []
     }
     currentState.unshift(newQuestion);
-    console.log('currentState after unshift: ', currentState)
     this.setState({
       questions: currentState
     }, () => {
-      console.log("new state after set state: ", this.state.questions)
       this.updateQuestion(this.state.questions)
     })
   }
@@ -81,11 +75,9 @@ class App extends React.Component {
       likes: 0
     }
     currentState[index].answers.push(newAnswer)
-    console.log('currentState: ', currentState[index].answers)
     this.setState({
       questions: currentState
     }, () => {
-      console.log("new state after set state: ", this.state.questions)
       this.updateQuestion(this.state.questions)
     })
   }

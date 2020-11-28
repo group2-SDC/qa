@@ -25,7 +25,8 @@ const path = require('path');
 
 module.exports = {
   entry: __dirname + '/client/src/index.jsx',
-  mode: 'development',
+  mode: 'production',
+  // switched mode to production
   module: {
     rules: [
       {

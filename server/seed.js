@@ -2,7 +2,7 @@ var faker = require('faker');
 const mongoose = require('mongoose');
 const { QuestionSet } = require('../database/index.js');
 const { save } = require('../database/index.js');
-// const axios = require('axios')
+const axios = require('axios')
 
 //To return all from these collections on command line
   //db.users.find() or db.questions.find() or db.answers.find()
@@ -34,9 +34,25 @@ var getRandomPic = () => {
   if (nonExistIds.indexOf(randomInt) > -1) {
     randomInt += 3;
     return 'https://picsum.photos/id/' + randomInt + '/200';
+    // axios.get('https://picsum.photos/id/' + randomInt + '/200')
+    // .then((response) => {
+    //   console.log('response.headers: ', response.headers)
+    //   // return response.headers.location
+    // })
+    // .catch((error) => {
+    //   console.log('ERROR WITH SEED GET REQUEST')
+    // })
     // Plus 3 will guarantee no duplication
   } else {
     return 'https://picsum.photos/id/' + randomInt + '/200';
+    // axios.get('https://picsum.photos/id/' + randomInt + '/200')
+    // .then((response) => {
+    //   console.log('response.headers: ', response.headers)
+    //   // return response.headers.location
+    // })
+    // .catch((error) => {
+    //   console.log('ERROR WITH SEED GET REQUEST')
+    // })
   }
 }
 var createNewData = (index) => {

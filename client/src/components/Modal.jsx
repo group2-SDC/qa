@@ -45,10 +45,8 @@ const ModalDisplay = styled.div`
   background: white;
   width: 70%;
   height: auto;
-  right: 0;
-  left: 0;
-  margin-right: auto;
-  margin-left: auto;
+  top: 30%;
+  left: 50%;
   border-color: black;
   border-width: 1px;
   transform: translate(-50%, -50%);

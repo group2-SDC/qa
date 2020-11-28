@@ -43,11 +43,8 @@ top: 4%;
 const ModalDisplay = styled.div`
   position: fixed;
   background: white;
-  overflow: hidden;
   width: 70%;
   height: auto;
-  top: 30%;
-  left: 50%;
   border-color: black;
   border-width: 1px;
   transform: translate(-50%, -50%);

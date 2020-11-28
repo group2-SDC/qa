@@ -43,6 +43,7 @@ top: 4%;
 const ModalDisplay = styled.div`
   position: fixed;
   background: white;
+  overflow: hidden;
   width: 70%;
   height: auto;
   top: 30%;
@@ -138,7 +139,6 @@ class Modal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleChange(event) {
-    console.log('event.target.value: ', event.target.value);
     this.setState({
       question: event.target.value
     });

@@ -28,8 +28,6 @@ class App extends React.Component {
     this.addAnswer = this.addAnswer.bind(this);
     this.plusOneVote = this.plusOneVote.bind(this);
     this.minusOneVote = this.minusOneVote.bind(this);
-    this.showModalApp = this.showModalApp.bind(this);
-    this.hideModalApp = this.hideModalApp.bind(this);
   }
 
   fetchQuestions() {
@@ -110,21 +108,11 @@ class App extends React.Component {
   componentDidMount() {
     this.fetchQuestions();
   }
-  showModalApp() {
-    this.setState({
-      modalShown: true
-    })
-  }
-  hideModalApp() {
-    this.setState({
-      modalShown: false
-    })
-  }
   render() {
     return (
       <Main className="parent">
         <WholeModule>
-          <AskQuestion showModalApp={this.showModalApp} hideModalApp={this.hideModalApp} questions={this.state.questions} addQuestion={this.addQuestion}/>
+          <AskQuestion questions={this.state.questions} addQuestion={this.addQuestion}/>
           <Questions questions={this.state.questions} addAnswer={this.addAnswer}  plusOneVote={this.plusOneVote} minusOneVote={this.minusOneVote}/>
         </WholeModule>
       </Main>

@@ -80,7 +80,6 @@ class AskQuestion extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event.target.value);
     this.setState({
       question: event.target.value
     });
@@ -98,12 +97,14 @@ class AskQuestion extends React.Component {
   showModal() {
     this.setState({
       showModal: true
-    })
+    });
+    this.props.showModalApp();
   }
   hideModal() {
     this.setState({
       showModal: false
-    })
+    });
+    this.props.hideModalApp();
   }
   render() {
     if (!this.state.showModal) {

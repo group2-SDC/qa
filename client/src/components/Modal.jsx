@@ -39,6 +39,10 @@ font-size: 16px;
 font-weight: 500;
 right: 2%;
 top: 4%;
+cursor: pointer;
+:hover {
+  color: #545454
+}
 `
 const ModalDisplay = styled.div`
   position: fixed;
@@ -93,6 +97,11 @@ const SubmitAButton = styled.button`
   height: 36px;
   width: 77px;
   margin-right: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+  :hover {
+    background-color: #292929;
+  }
 `
 SubmitAButton.displayName = 'SubmitAButton';
 
@@ -110,6 +119,11 @@ const SubmitQButton = styled.button`
   text-align: center;
   height: 36px;
   width: 77px;
+  cursor: pointer;
+  transition: 0.2s;
+  :hover {
+    background-color: #d6d6d6;
+  }
 `
 SubmitQButton.displayName = 'SubmitQButton'
 const AnswerSubmission = styled.div`
@@ -118,6 +132,7 @@ const PostingGuidelines = styled.div`
 margin-top: 16px;
 color: rgb(44, 44, 44);
 display: inline-block;
+cursor: pointer;
 `
 const Guidelines = styled.span`
 font-size: 14px;

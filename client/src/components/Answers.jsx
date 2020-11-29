@@ -58,8 +58,20 @@ const Likes = styled.span`
   font-weight: 500;
   text-align: center;
 `
+const ThumbUp = styled.span`
+cursor: pointer;
+transition: 0.2s;
+  :hover {
+    background-color: #292929;
+  }
+`
 const ThumbDown = styled.span`
   margin-bottom: -10px;
+  cursor: pointer;
+  transition: 0.2s;
+  :hover {
+    background-color: #292929;
+  }
 `
 const ShowAnswerButton = styled.span`
   font-size: 14px;
@@ -133,9 +145,9 @@ class Answers extends React.Component {
                   <AnswerBody>
                     {answer.ansAnswer}
                     <Votes>
-                      <span>
+                      <ThumbUp>
                         <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, ansIndex)}></i>
-                      </span>
+                      </ThumbUp>
                       <Likes>{answer.likes} votes</Likes>
                       <ThumbDown>
                         <i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, ansIndex)}></i>
@@ -166,9 +178,9 @@ class Answers extends React.Component {
           <AnswerBody>
             {this.props.answers[0].ansAnswer}
             <Votes>
-              <span>
+              <ThumbUp>
                 <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, 0)}></i>
-              </span>
+              </ThumbUp>
               <Likes>{this.props.answers[0].likes} votes</Likes>
               <ThumbDown>
                 <i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, 0)}></i>
@@ -193,9 +205,9 @@ class Answers extends React.Component {
           <AnswerBody>
             {this.props.answers[0].ansAnswer}
             <Votes>
-              <span>
+              <ThumbUp>
                 <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, 0)}></i>
-              </span>
+              </ThumbUp>
               <Likes>{this.props.answers[0].likes} votes</Likes>
               <ThumbDown>
                 <i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, 0)}></i>

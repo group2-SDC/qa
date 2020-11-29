@@ -65,16 +65,14 @@ const ThumbDown = styled.span`
 `
 const Up = styled.i `
 cursor: pointer;
-transition: 0.2s;
   :hover {
     color: #292929;
   }
 `
 const Down = styled.i `
   cursor: pointer;
-  transition: 0.2s;
   :hover {
-    background-color: #292929;
+    color: #292929;
   }
 `
 const ShowAnswerButton = styled.span`

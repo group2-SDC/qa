@@ -135,7 +135,6 @@ class Questions extends React.Component {
   }
 
   handleChange(event) {
-    console.log('event.target.value: ', event.target.value);
     this.setState({
       answerText: event.target.value
     })
@@ -143,7 +142,6 @@ class Questions extends React.Component {
   handleSubmit(index, answerText) {
     // fix with event as parameter?
     event.preventDefault();
-    console.log("INDEX: ", index);
     this.props.addAnswer(answerText, index);
     this.reinitializeState();
   }

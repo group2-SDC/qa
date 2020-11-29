@@ -45,7 +45,7 @@ background-color: green;
 opacity: 0.8;
 height: 100%;
 width: 100%;
-z-index: 2;
+z-index: 4;
 overflow: hidden;
 `
 const ModalDisplay = styled.div`

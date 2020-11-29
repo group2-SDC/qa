@@ -66,6 +66,7 @@ const ShowAnswerButton = styled.span`
   line-height: 18px;
   margin-top: 16px;
   display: block;
+  cursor: pointer;
 `
 
 class Answers extends React.Component {

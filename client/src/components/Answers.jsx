@@ -37,6 +37,7 @@ display: inline;
 float: none;
 position: relative;
 color: rgb(0, 0, 0);
+cursor: pointer;
 `
 const AnswerBody = styled.div`
   color: rgb(140, 140, 140);

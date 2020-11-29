@@ -9,17 +9,10 @@ const Main = styled.div `
   font-family: 'Poppins';
   font-weight: 200;
 `
-const MainAlt = styled.div`
-  background-color: green;
-  font-family: 'Poppins';
-  font-weight: 200;
-  overflow: hidden;
-`
 const WholeModule = styled.div `
   padding: 12px;
   width: 66.6666677%;
 `
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -128,27 +121,15 @@ class App extends React.Component {
     })
   }
   render() {
-    if (!this.state.modalShown) {
-      return (
-        <Main className="parent">
-          <WholeModule>
-            <AskQuestion showModalApp={this.showModalApp} hideModalApp={this.hideModalApp} questions={this.state.questions} addQuestion={this.addQuestion}/>
-            <Questions questions={this.state.questions} addAnswer={this.addAnswer}  plusOneVote={this.plusOneVote} minusOneVote={this.minusOneVote}/>
-          </WholeModule>
-        </Main>
-      )
-    } else {
-      return (
-        <MainAlt className="parent">
-          <WholeModule>
-            <AskQuestion showModalApp={this.showModalApp} hideModalApp={this.hideModalApp} questions={this.state.questions} addQuestion={this.addQuestion}/>
-            <Questions questions={this.state.questions} addAnswer={this.addAnswer}  plusOneVote={this.plusOneVote} minusOneVote={this.minusOneVote}/>
-          </WholeModule>
-        </MainAlt>
-      )
-    }
+    return (
+      <Main className="parent">
+        <WholeModule>
+          <AskQuestion showModalApp={this.showModalApp} hideModalApp={this.hideModalApp} questions={this.state.questions} addQuestion={this.addQuestion}/>
+          <Questions questions={this.state.questions} addAnswer={this.addAnswer}  plusOneVote={this.plusOneVote} minusOneVote={this.minusOneVote}/>
+        </WholeModule>
+      </Main>
+    )
   }
-
 }
 
 export default App;

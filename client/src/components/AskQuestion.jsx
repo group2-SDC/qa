@@ -29,6 +29,10 @@ const SubmitQButton = styled.button`
   width: 126px;
   right: 2%;
   cursor: pointer;
+  transition: background-color;
+  :hover {
+    background-color: green;
+  }
 `
 SubmitQButton.displayName = 'SubmitQButton'
 

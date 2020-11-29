@@ -40,14 +40,6 @@ font-weight: 500;
 right: 2%;
 top: 4%;
 `
-const Body = styled.div`
-background-color: green;
-opacity: 0.8;
-height: 100%;
-width: 100%;
-z-index: 4;
-overflow: hidden;
-`
 const ModalDisplay = styled.div`
   position: fixed;
   background: white;
@@ -158,7 +150,6 @@ class Modal extends React.Component {
   }
   render() {
     return (
-      <Body>
       <ModalDisplay>
         <TotalModal>
           <AskAQuestion>
@@ -191,7 +182,6 @@ class Modal extends React.Component {
           </Overall>
         </TotalModal>
       </ModalDisplay>
-      </Body>
     )
   }
 }

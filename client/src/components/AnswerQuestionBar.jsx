@@ -50,6 +50,11 @@ text-align: center;
 height: 36px;
 width: 77px;
 margin-right: 16px;
+cursor: pointer;
+  transition: 0.2s;
+  :hover {
+    background-color: #292929;
+  }
 `
 const SubmitQButton = styled.button `
 background-color: rgb(255, 255, 255);
@@ -65,6 +70,11 @@ padding-left: 16px;
 text-align: center;
 height: 36px;
 width: 77px;
+cursor: pointer;
+  transition: 0.2s;
+  :hover {
+    background-color: #d6d6d6;
+  }
 `
 const AnswerBarStyled = styled.div `
   padding: 16px 24px 24px 12px;

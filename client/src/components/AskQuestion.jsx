@@ -28,6 +28,7 @@ const SubmitQButton = styled.button`
   height: 36px;
   width: 126px;
   right: 2%;
+  cursor: pointer;
 `
 SubmitQButton.displayName = 'SubmitQButton'
 

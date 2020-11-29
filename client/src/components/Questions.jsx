@@ -42,6 +42,7 @@ const QuestionBody = styled.div`
 `
 const Ellipsis = styled.i`
   float: right;
+  cursor: pointer;
 `
 const UserAndDate = styled.div`
   padding-bottom: 2px;

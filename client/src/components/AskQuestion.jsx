@@ -98,13 +98,11 @@ class AskQuestion extends React.Component {
     this.setState({
       showModal: true
     });
-    this.props.showModalApp();
   }
   hideModal() {
     this.setState({
       showModal: false
     });
-    this.props.hideModalApp();
   }
   render() {
     if (!this.state.showModal) {

@@ -59,14 +59,18 @@ const Likes = styled.span`
   text-align: center;
 `
 const ThumbUp = styled.span`
-cursor: pointer;
-transition: 0.2s;
-  :hover {
-    background-color: #292929;
-  }
 `
 const ThumbDown = styled.span`
   margin-bottom: -10px;
+`
+const Up = styled.i `
+cursor: pointer;
+transition: 0.2s;
+  :hover {
+    color: #292929;
+  }
+`
+const Down = styled.i `
   cursor: pointer;
   transition: 0.2s;
   :hover {
@@ -146,11 +150,11 @@ class Answers extends React.Component {
                     {answer.ansAnswer}
                     <Votes>
                       <ThumbUp>
-                        <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, ansIndex)}></i>
+                        <Up className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, ansIndex)}></Up>
                       </ThumbUp>
                       <Likes>{answer.likes} votes</Likes>
                       <ThumbDown>
-                        <i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, ansIndex)}></i>
+                        <Down className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, ansIndex)}></Down>
                       </ThumbDown>
                     </Votes>
                   </AnswerBody>
@@ -179,11 +183,11 @@ class Answers extends React.Component {
             {this.props.answers[0].ansAnswer}
             <Votes>
               <ThumbUp>
-                <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, 0)}></i>
+                <Up className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, 0)}></Up>
               </ThumbUp>
               <Likes>{this.props.answers[0].likes} votes</Likes>
               <ThumbDown>
-                <i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, 0)}></i>
+                <Down className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, 0)}></Down>
               </ThumbDown>
             </Votes>
           </AnswerBody>
@@ -206,11 +210,11 @@ class Answers extends React.Component {
             {this.props.answers[0].ansAnswer}
             <Votes>
               <ThumbUp>
-                <i className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, 0)}></i>
+                <Up className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, 0)}></Up>
               </ThumbUp>
               <Likes>{this.props.answers[0].likes} votes</Likes>
               <ThumbDown>
-                <i className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, 0)}></i>
+                <Down className="far fa-thumbs-down" onClick={() => this.props.decrementVote(this.props.questionIndex, 0)}></Down>
               </ThumbDown>
             </Votes>
           </AnswerBody>

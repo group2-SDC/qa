@@ -13,6 +13,7 @@ const MainAlt = styled.div`
   background-color: green;
   font-family: 'Poppins';
   font-weight: 200;
+  overflow: hidden;
 `
 const WholeModule = styled.div `
   padding: 12px;

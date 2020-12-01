@@ -1,4 +1,3 @@
-
 const path = require('path');
 
 // module.exports = {
@@ -24,10 +23,7 @@ const path = require('path');
 // };
 
 module.exports = {
-  entry: {
-    main: __dirname + '/client/src/index.jsx',
-    vendor: ['styled-components'],
-  },
+  entry: __dirname + '/client/src/index.jsx',
   mode: 'production',
   // switched mode to production
   module: {
@@ -47,15 +43,5 @@ module.exports = {
    output: {
     filename: 'bundle.js',
     path: __dirname + '/client/dist'
-  },
-  optimization: {
-    splitChunks: {
-      minChunks: Infinity,
-      name: true
-    },
-    runtimeChunk: {
-      name: 'vendor'
-    }
   }
 };
-

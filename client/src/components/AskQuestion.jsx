@@ -17,7 +17,7 @@ const SubmitQButton = styled.button`
   border-color: rgb(0, 0, 0);
   border-radius: 3px;
   border-width: 1px;
-  display: block;
+  display: inline-block;
   color: rgb(255, 255, 255);
   // Will need to fix float
   padding-bottom: 8px;

@@ -28,7 +28,7 @@ const SubmitQButton = styled.button`
   height: 36px;
   width: 126px;
   right: 2%;
-  font-size: 13px;
+  font-size: 12px;
   cursor: pointer;
   transition: 0.2s;
   :hover {

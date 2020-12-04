@@ -14,11 +14,12 @@ const createPost = () => {
   const ansDate = faker.date.past().toDateString()
   const ansAnswer = faker.lorem.paragraph()
   const likes = faker.random.number(10)
+  const questionId = faker.random.number(10000000)
   j++
   if (j > 999) {
     j = 0
   };
-  return `${ansUsername},${ansProfilePic},${ansDate},${ansAnswer},${likes}\n`
+  return `${ansUsername},${ansProfilePic},${ansDate},${ansAnswer},${likes},${questionId}\n`
 
 }
 

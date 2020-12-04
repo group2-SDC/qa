@@ -91,7 +91,6 @@ height: 36px;
 width: 77px;
 `
 PrevButton.displayName = 'PrevButton';
-
 const NextButton = styled.button`
 background-color: rgb(0, 0, 0);
 border-color: rgb(0, 0, 0);
@@ -109,7 +108,6 @@ height: 36px;
 width: 77px;
 `
 NextButton.displayName = 'NextButton';
-
 const CircleIcon = styled.span`
   font-size: 4px;
   vertical-align: middle;

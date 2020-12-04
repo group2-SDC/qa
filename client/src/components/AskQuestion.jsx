@@ -11,7 +11,6 @@ const AskQuestionBar = styled.form `
 const TextField = styled.textarea `
 `
 TextField.displayName = 'TextField';
-
 const SubmitQButton = styled.button`
   background-color: rgb(0, 0, 0);
   border-color: rgb(0, 0, 0);
@@ -36,7 +35,6 @@ const SubmitQButton = styled.button`
   }
 `
 SubmitQButton.displayName = 'SubmitQButton'
-
 const LowerSpanDiv = styled.div `
 padding: 0 24px;
 margin-bottom: 24px;

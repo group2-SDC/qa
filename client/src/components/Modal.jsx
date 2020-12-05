@@ -81,7 +81,6 @@ overflow: hidden;
 resize: none;
 `
 TextFieldExpanded.displayName = 'TextFieldExpanded';
-
 const SubmitAButton = styled.button`
   background-color: rgb(0, 0, 0);
   border-color: rgb(0, 0, 0);
@@ -104,7 +103,6 @@ const SubmitAButton = styled.button`
   }
 `
 SubmitAButton.displayName = 'SubmitAButton';
-
 const SubmitQButton = styled.button`
   background-color: rgb(255, 255, 255);
   border-color: rgb(0, 0, 0);

@@ -129,23 +129,25 @@ class Answers extends React.Component {
 
   render() {
     if (this.state.showAll) {
+      console.log(this.props.answers)
       return (
         <div>
           {this.props.answers.map((answer, ansIndex) => {
+            console.log(answer)
             return (
               <AnswersStyled>
                 <div key={ansIndex}>
                   <AnswersHeader>
-                    <Image src={`${answer.ansProfilePic}`} ></Image>
-                    <AnswerFrom><span>Answer from <Username>{answer.ansUsername}</Username></span></AnswerFrom>
+                    <Image src={`${answer.ansprofilepic}`} ></Image>
+                    <AnswerFrom><span>Answer from <Username>{answer.ansusername}</Username></span></AnswerFrom>
                     <div>
                       <DateAndEllipsis>
-                      {this.convertToMonthYear(answer.ansDate)} | <Ellipsis><span><i className="fas fa-ellipsis-h"></i></span></Ellipsis>
+                      {this.convertToMonthYear(answer.ansdate)} | <Ellipsis><span><i className="fas fa-ellipsis-h"></i></span></Ellipsis>
                       </DateAndEllipsis>
                     </div>
                   </AnswersHeader>
                   <AnswerBody>
-                    {answer.ansAnswer}
+                    {answer.ansanswer}
                     <Votes>
                       <ThumbUp>
                         <Up className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, ansIndex)}></Up>
@@ -169,16 +171,16 @@ class Answers extends React.Component {
       return (
         <AnswersStyled>
           <AnswersHeader>
-            <Image src={`${this.props.answers[0].ansProfilePic}`} ></Image>
-            <AnswerFrom><span>Answer from <Username>{this.props.answers[0].ansUsername}</Username></span></AnswerFrom>
+            <Image src={`${this.props.answers[0].ansprofilepic}`} ></Image>
+            <AnswerFrom><span>Answer from <Username>{this.props.answers[0].ansusername}</Username></span></AnswerFrom>
             <div>
               <DateAndEllipsis>
-                {this.convertToMonthYear(this.props.answers[0].ansDate)} | <Ellipsis><span><i className="fas fa-ellipsis-h"></i></span></Ellipsis>
+                {this.convertToMonthYear(this.props.answers[0].ansdate)} | <Ellipsis><span><i className="fas fa-ellipsis-h"></i></span></Ellipsis>
               </DateAndEllipsis>
             </div>
           </AnswersHeader>
           <AnswerBody>
-            {this.props.answers[0].ansAnswer}
+            {this.props.answers[0].ansanswer}
             <Votes>
               <ThumbUp>
                 <Up className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, 0)}></Up>
@@ -196,16 +198,16 @@ class Answers extends React.Component {
       return (
         <AnswersStyled>
           <AnswersHeader>
-            <Image src={`${this.props.answers[0].ansProfilePic}`} ></Image>
-            <AnswerFrom><span>Answer from <Username>{this.props.answers[0].ansUsername}</Username></span></AnswerFrom>
+            <Image src={`${this.props.answers[0].ansprofilepic}`} ></Image>
+            <AnswerFrom><span>Answer from <Username>{this.props.answers[0].ansusername}</Username></span></AnswerFrom>
             <div>
               <DateAndEllipsis>
-                {this.convertToMonthYear(this.props.answers[0].ansDate)} | <Ellipsis><span><i className="fas fa-ellipsis-h"></i></span></Ellipsis>
+                {this.convertToMonthYear(this.props.answers[0].ansdate)} | <Ellipsis><span><i className="fas fa-ellipsis-h"></i></span></Ellipsis>
               </DateAndEllipsis>
             </div>
           </AnswersHeader>
           <AnswerBody>
-            {this.props.answers[0].ansAnswer}
+            {this.props.answers[0].ansanswer}
             <Votes>
               <ThumbUp>
                 <Up className="far fa-thumbs-up" onClick={() => this.props.incrementVote(this.props.questionIndex, 0)}></Up>

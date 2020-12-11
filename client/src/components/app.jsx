@@ -35,7 +35,7 @@ class App extends React.Component {
     axios.get('/api/listings/' + this.state.pathname + '/questions/')
     .then((response) => {
       this.setState({
-        questions: response.data[0].questions
+        questions: response.data
       })
     }).catch((error) => {
       console.log('THERE WAS AN ERROR: ')

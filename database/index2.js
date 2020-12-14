@@ -4,7 +4,7 @@ const pool = new Pool({
 });
 pool.connect();
 
-const getAllQuestionsWithTripId = function (query, callback) {
+const queryDB = function (query, callback) {
     pool
         .query(query)
         .then((res) => {
@@ -15,6 +15,8 @@ const getAllQuestionsWithTripId = function (query, callback) {
         })
 }
 
+
 module.exports = {
-    getAllQuestionsWithTripId
+    queryDB,
+    
 }

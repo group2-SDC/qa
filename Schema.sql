@@ -20,6 +20,10 @@ UNIQUE(id),
 PRIMARY KEY(tripId, id)
 );
 
+insert into questions 
+(tripId, username, profilePic, date, location, numContributions, numHelpfulVotes, question) 
+VALUES(9000007,'travis_B','https://picsum.photos/id/100/200','2020-11-16','Seattle Washington',1,2,'will this work?');
+
 CREATE TABLE answers (
 id serial,
 questionId int,

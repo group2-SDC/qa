@@ -16,7 +16,8 @@ location varchar,
 numContributions int,
 numHelpfulVotes int,
 question varchar,
-PRIMARY KEY(id)
+UNIQUE(id),
+PRIMARY KEY(tripId, id)
 );
 
 CREATE TABLE answers (

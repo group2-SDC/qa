@@ -196,7 +196,7 @@ class Questions extends React.Component {
             <QuestionModule key={questionIndex} className='question'>
               <Question>
                 <QuestionHeader>
-                  <Image src={`${question.profilePic}`} ></Image>
+                  <Image src={`${question.profilepic}`} ></Image>
                   <QuestionHeaderInfo>
                     <Ellipsis className="fas fa-ellipsis-h"></Ellipsis>
                     <UserAndDate>
@@ -214,7 +214,9 @@ class Questions extends React.Component {
                 </QuestionBody>
                 <br></br>
               </Question>
-              <Answers answers={question.answers} questionIndex={questionIndex} incrementVote={this.incrementVote} decrementVote={this.decrementVote} />
+              {question.ansanswer !== null &&
+              <Answers answers={this.props.questions} questionIndex={questionIndex} incrementVote={this.incrementVote} decrementVote={this.decrementVote} />
+        }
               <AnswerQuestionBar questionIndex={questionIndex} handleSubmit={this.handleSubmit} />
             </QuestionModule>
           )

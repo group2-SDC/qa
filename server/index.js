@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const port = 3004;
 const compression = require('compression')
-const { QuestionSet } = require('../database/index.js');
+// const { QuestionSet } = require('../database/index.js');
+const db = require('../database/index2.js')
+
 
 app.use(compression());
 
@@ -13,24 +15,20 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-
-app.get('/api/listings/:listings_id/questions', function(req, res) {
-  var allUsers = QuestionSet.find({primaryRecord: req.params.listings_id}).exec((err, data) => {
-    // IT DOES NOT APPEAR I CAN SORT BY ANYTHING WITHIN THE QUESTIONS ARRAY ('questions.numContributions'), AS IT IS TOO COMPLEX OF AN OBJECT FOR MONGOOSE TO SORT
-    // sort by primary record?
-    if (err) {
-      console.log(err)
-    } else {
-      res.send(data)
-    }
+app.get('/api/listings/:listings_id/questions', (req, res) => {
+  const id = req.params.listings_id; 
+  var query = `select * from questions FULL JOIN answers on answers.questionId = questions.id where questions.tripId = ${id}`;
+  db.getAllQuestionsWithTripId(query, (result) => {
+    res.send(result);
   })
-})
+});
 
-app.post('/questions', function(req, res) {
+
+app.post('/questions', function (req, res) {
   // req.body.id or something else will be how I transfer the inputted answer
   // then I find the specific item with QuestionSet.find(<some parameter>)
   // I update the answers at that part
-  var newQuestion = QuestionSet.findOneAndUpdate({primaryRecord: 0}, {questions: req.body}).exec((err, data) => {
+  var newQuestion = QuestionSet.findOneAndUpdate({ primaryRecord: 0 }, { questions: req.body }).exec((err, data) => {
     //Will also need to update the above line
     if (err) {
       console.log(err)
@@ -40,8 +38,8 @@ app.post('/questions', function(req, res) {
   })
 })
 
-app.post('/questions/answers', function(req, res) {
-  var newAnswer = QuestionSet.findOneAndUpdate({primaryRecord: 0}, {questions: [req.body]}).exec((err, data) => {
+app.post('/questions/answers', function (req, res) {
+  var newAnswer = QuestionSet.findOneAndUpdate({ primaryRecord: 0 }, { questions: [req.body] }).exec((err, data) => {
     if (err) {
       console.log(err)
     } else {

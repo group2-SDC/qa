@@ -44,17 +44,18 @@ class App extends React.Component {
   addQuestion(question) {
     var currentState = this.state.questions.slice();
     var newQuestion = {
+      tripId: this.state.pathname,
       username: 'Matthew Crawford',
       // might have to change from Matthew Crawford
-      profilePic: 'https://picsum.photos/id/100/200',
+      profilepic: 'https://picsum.photos/id/100/200',
       date: '2020-11-16',
       //Date hardcoded, will need to change
       location: 'Seattle, Washington, United States',
       numContributions: 1,
       numHelpfulVotes: 0,
       question: question,
-      answers: []
     }
+    console.log('from within addQuestion in App', newQuestion)
     currentState.unshift(newQuestion);
     this.setState({
       questions: currentState
@@ -81,6 +82,7 @@ class App extends React.Component {
     })
   }
   updateQuestion(questionsArray) {
+    console.log('from within updateQuestion in App', questionsArray)
     axios({
       method: 'post',
       url: '/questions',

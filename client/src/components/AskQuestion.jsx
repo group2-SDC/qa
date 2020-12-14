@@ -90,6 +90,7 @@ class AskQuestion extends React.Component {
   }
   handleSubmit(question) {
     event.preventDefault();
+    console.log('from within handleSubmit on AskQuestion', question)
     this.props.addQuestion(question);
     this.reinitializeState();
   }

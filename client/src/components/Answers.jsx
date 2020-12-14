@@ -128,8 +128,7 @@ class Answers extends React.Component {
   }
 
   render() {
-    if (this.state.showAll) {
-      console.log(this.props.answers)
+    if (this.state.showAll && this.state.answers.ansanswer !== null) {
       return (
         <div>
           {this.props.answers.map((answer, ansIndex) => {
@@ -194,7 +193,9 @@ class Answers extends React.Component {
         </AnswersStyled>
       )
     }
-    else if (this.props.answers[0] !== undefined) {
+    else if (this.props.answers.ansanswer !== undefined) {
+            // else if (this.props.answers.ansanswer !== null) {
+
       return (
         <AnswersStyled>
           <AnswersHeader>

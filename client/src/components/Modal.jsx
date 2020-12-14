@@ -158,6 +158,7 @@ class Modal extends React.Component {
   }
   handleSubmit() {
     event.preventDefault();
+    console.log('from within handleSubmit in modal', this.state.question)
     this.props.handleSubmit(this.state.question);
     this.props.hideModal();
   }

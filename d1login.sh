@@ -1,0 +1,1 @@
+ ssh -i "sdcdatabase.pem" ubuntu@ec2-54-214-150-21.us-west-2.compute.amazonaws.com

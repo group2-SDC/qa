@@ -20,10 +20,6 @@ UNIQUE(id),
 PRIMARY KEY(tripId, id)
 );
 
-insert into questions 
-(tripId, username, profilePic, date, location, numContributions, numHelpfulVotes, question) 
-VALUES(9000007,'travis_B','https://picsum.photos/id/100/200','2020-11-16','Seattle Washington',1,2,'will this work?');
-
 CREATE TABLE answers (
 id serial,
 questionId int,
@@ -37,3 +33,11 @@ ansAnswer varchar,
 likes int,
 PRIMARY KEY(questionId, id)
 )
+
+
+
+
+-- sudo -i -u postgres
+
+-- sudo vim  /etc/nginx/conf.d/load-balancer.conf
+-- sudo service nginx restart

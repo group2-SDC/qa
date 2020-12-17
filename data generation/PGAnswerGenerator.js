@@ -2,7 +2,7 @@ const fs = require('fs')
 const faker = require('faker')
 const argv = require('yargs').argv
 
-const lines = argv.lines || 10000000
+const lines = argv.lines || 1000000
 const filename = argv.output || 'PGAnswers2.csv'
 const stream = fs.createWriteStream(filename)
 const imageFilePath = 'https://ghrsea13-sdc-group2.s3-us-west-2.amazonaws.com/';

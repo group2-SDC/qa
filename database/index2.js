@@ -1,10 +1,8 @@
-const { Pool } = require('pg')
-const pool = new Pool({
-    database: 'qa'
-});
+const { pool } = require('./config.js')
+
 pool.connect();
 
-const queryDB = function (query, callback) {
+const getQuestion = function (query, callback) {
     pool
         .query(query)
         .then((res) => {
@@ -15,8 +13,19 @@ const queryDB = function (query, callback) {
         })
 }
 
+const insertIntoDB = function (query, values, callback) {
+    pool
+        .query(query, values)
+        .then((res) => {
+            callback(res.rows);
+        })
+        .catch(e => {
+            console.log(e);
+        })
+}
+
 
 module.exports = {
-    queryDB,
-    
+    insertIntoDB,
+    getQuestion,
 }
